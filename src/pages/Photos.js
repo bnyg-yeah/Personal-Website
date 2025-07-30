@@ -1,12 +1,13 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+// import Header from "../components/Header";
+// import Footer from "../components/Footer";
+import Layout from "../components/Layout"; 
 
 export default function Photos() {
   return (
     <div>
-      <Header title="Photo Gallery" subtitile='These are my favourite photos taken from my travels' />
-      {/* render <img src="/images/..." /> for your photos */}
-      <Footer />
+      <Layout title="My Photos" subtitle="Some of my favourite photos from my travels">
+        {/* Your photo gallery here */}
+      </Layout>
     </div>
   );
 }

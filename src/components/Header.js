@@ -1,13 +1,13 @@
-import "./Header.module.css";
+import styles from "./Header.module.css";
 
 function Header({ title, subtitle }) {
   return (
-    <header className="header">
+    <header className={styles.header}>
 
-      <h1 className="header_title">{title}</h1>
+      <h1 className={styles.header_title}>{title}</h1>
 
       {/* this lets header be optional */}
-      {subtitle && <p className="header_subtitle">{subtitle}</p>} 
+      {subtitle && <p className={styles.header_subtitle}>{subtitle}</p>} 
 
     </header>
   );

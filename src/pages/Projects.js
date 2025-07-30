@@ -1,12 +1,12 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Layout from "../components/Layout";
 
 export default function Projects() {
   return (
     <div>
-      <Header title="My Projects" />
-      {/* list your projects here */}
-      <Footer />
+      <Layout
+        title="My Projects"
+        subtitle="Explore my latest work and contributions"
+      ></Layout>
     </div>
   );
 }
