@@ -1,0 +1,17 @@
+.header {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: inline-block; /* shrink-wrap around text */
+}
+
+.header_title {
+  font-size: 2rem; /* scalable size */
+  color: white; /* white text */
+  margin: 0; 
+}
+
+.header_subtitle {
+  font-size: 1rem;
+  color: white;
+  margin: 4px;
+}

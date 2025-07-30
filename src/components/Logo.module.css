@@ -1,0 +1,7 @@
+.Logo {
+  position: absolute; /* so you can position it anywhere, starting at the top left corner */
+  top: 20px;
+  left: 20px;
+  width: 40px;
+  z-index: 10; /* ensures it generally stays on top of other elements, go higher value for more front layer */
+}
