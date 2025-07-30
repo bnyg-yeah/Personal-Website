@@ -8,6 +8,7 @@ export default function Nav() {
       <Link href="/">Home</Link>
       <Link href="/Projects">Projects</Link>
       <Link href="/Photos">Photos</Link>
+      <Link href="/AboutMe">About Me</Link>
     </nav>
   );
 }
