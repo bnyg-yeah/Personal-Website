@@ -8,11 +8,9 @@ html, body {
 .App {
   /* Layered background: image + black overlay */
   background-image:
-    url("/images/HDR-photo.AVIF"),
-    linear-gradient(black, black);
-  background-size:
-    auto 100%,
-    100% 100%;
+    url("/images/Background.jpg");
+    /* linear-gradient(black, black); */
+  background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
 
