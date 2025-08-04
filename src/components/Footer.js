@@ -1,4 +1,5 @@
 import styles from "./Footer.module.css";
+import Image from "next/image";
 
 function Footer() {
   return (
@@ -12,7 +13,13 @@ function Footer() {
           rel="noopener noreferrer"
           className={styles.socials_icon} //so css can access it, named for anti adblock purposes
         >
-          <img src="/icons/socials1_icon.svg" alt="Social 1 Icon" loading='eager'/>
+          <Image
+            src="/icons/socials1_icon.svg"
+            alt="Social 1 Icon"
+            width={30}
+            height={30}
+            priority={true}
+          />
         </a>
         {/* end instagram button */}
 
@@ -23,14 +30,18 @@ function Footer() {
           rel="noopener noreferrer"
           className={styles.socials_icon}
         >
-          <img src="/icons/socials2_icon.png" alt="Social 2 Icon" loading='lazy'/>
+          <Image
+            src="/icons/socials2_icon.png"
+            alt="Social 2 Icon"
+            width={30}
+            height={30}
+            priority={false}
+          />
         </a>
         {/* end LinkedIn button */}
       </div>
-        {/* Footer message */}
-      <p className={styles.footer_message}>
-        Website created by Brighton Young
-      </p>
+      {/* Footer message */}
+      <p className={styles.footer_message}>Website created by Brighton Young</p>
       {/*End footer message */}
     </div>
     // end footer

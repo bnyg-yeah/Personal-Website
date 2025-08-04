@@ -5,7 +5,7 @@ export default function Projects() {
     <div>
       <Layout
         title="My Projects"
-        subtitle="Explore my latest work and contributions"
+        subtitle="Brighton Young's latest work on display"
       ></Layout>
     </div>
   );

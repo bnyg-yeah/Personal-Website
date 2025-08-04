@@ -1,7 +1,6 @@
 .header {
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: inline-block; /* shrink-wrap around text */
+  /* background-color: rgba(256, 256, 256, 0.05); */
 }
 
 .header_title {

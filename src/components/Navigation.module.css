@@ -1,17 +1,25 @@
 .Navigation {
-  position: absolute; /* so you can position it anywhere, starting at the top left corner */
+  position: absolute; 
   top: 20px;
   right: 20px;
   width: auto;
 
   display: flex;
+  flex-direction: row;
   gap: 20px;
-  z-index: 10; /* ensures it generally stays on top of other elements, go higher value for more front layer */
+
+  z-index: 10; /*ensures it generally stays on top of other elements, go higher value for more front layer  */
 }
 
-/* Add styling to individual links */
-/* a is the actual tag for links */
-.Navigation a {
+.MainLinks {
+  display: flex;
+  flex-direction: row;
+  gap: 20px; /* Space between links */
+  align-items: center; /* Center items vertically */
+}
+/*Individual ink styles */
+.MainLinks a {
+  
   color: white;
   font-size: 16px;       /* or adjust to your desired size */
   text-decoration: none; /* removes underline */
@@ -19,7 +27,79 @@
 }
 
 /* Optional hover effect */
-/* a is the actual tag for links */
-.Navigation a:hover {
-  opacity: 0.7;
+.MainLinks a:hover {
+  opacity: 0.5;
+  background-color: rgba(256, 256, 256, 0.05);
+}
+
+/* Container for hamburger + dropdown */
+.HamburgerContainer {
+  position: relative;
+}
+
+/* Hamburger icon */
+.Hamburger {
+  color: white;
+  font-size: 16px;
+}
+
+.Hamburger:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+
+
+
+
+
+.Dropdown {
+  position: absolute;
+  top: 30px; /* aligns nicely with padding/gap from nav */
+  right: -19px; /* flush right to screen/hamburger, 20px same as the Navigation gap, moved to the left one bc of visual glitch currently */
+  background-color: rgba(0, 0, 0, 0.05); /* semi-transparent */
+  border: 1px solid white;
+  border-radius: 4px;
+  /* padding: 8px 0; */
+  display: flex;
+  flex-direction: column;
+  min-width: 150px; /* width of the dropdown */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+  z-index: 20;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+/* Arrow pointing to hamburger */
+.Dropdown::before {
+  content: '';
+  position: absolute;
+  top: -8px; /* just above the dropdown box */
+  right: 18px; /* moves the arrow toward the right edge */
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 8px solid white;
+}
+
+.Dropdown a {
+  padding: 10px 0px;
+  color: white;
+  text-decoration: none;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 16px;
+}
+
+.Dropdown a:hover {
+  background-color: rgba(256, 256, 256, 0.05);
+}
+
+/* Dropdown animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
