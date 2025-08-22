@@ -27,15 +27,15 @@ export default function Layout({ title, subtitle, children }: LayoutProps) {
       <SiteHeader />
 
       {/* 9) Optional heading section under the header (no banner bg) */}
-      {(title || subtitle) && (
-        <header className="mx-auto w-full max-w-4xl px-4 pt-3 text-white">
-          {title && (
-            <h1 className="m-0 text-2xl font-semibold sm:text-3xl">{title}</h1>
-          )}
-          {subtitle && (
-            <p className="mt-1 text-base opacity-90 sm:text-lg">{subtitle}</p>
-          )}
-        </header>
+      {title && (
+        <h1 className="m-0 text-2xl font-['Times'] font-bold sm:text-3xl text-white">
+          {title}
+        </h1>
+      )}
+      {subtitle && (
+        <p className="mt-1 text-base font-['Times'] opacity-90 sm:text-1x1 text-white">
+          {subtitle}
+        </p>
       )}
 
       {/* 10) Main page content */}
