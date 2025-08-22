@@ -1,7 +1,12 @@
+/* website-on-next/src/styles/globals.css */
+@import "tailwindcss";
+
+
 /* Ensure full height layout */
 html, body {
   height: 100%;
   margin: 0;
+  font-family: 'Trebuchet MS', sans-serif;
 }
 
 /* App container with background and full-height flex layout */

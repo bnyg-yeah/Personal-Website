@@ -1,3 +1,5 @@
+// website-on-next/src/pages/Photos.js
+
 // import Header from "../components/Header";
 // import Footer from "../components/Footer";
 import Layout from "../components/Layout"; 
