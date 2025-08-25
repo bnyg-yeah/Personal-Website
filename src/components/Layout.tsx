@@ -39,7 +39,7 @@ export default function Layout({ title, subtitle, children }: LayoutProps) {
       )}
 
       {/* 10) Main page content */}
-      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-6">
+      <main className="mx-auto font-['Times'] w-full max-w-5xl flex-1 px-4 py-6">
         {children}
       </main>
 
