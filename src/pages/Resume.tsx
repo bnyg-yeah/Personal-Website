@@ -46,7 +46,7 @@ export default function Resume() {
         <object
           data={pdfURL} // points to the PDF file
           type="application/pdf" // lets the browser render it as PDF
-          aria-label="Resume PDF viewer (one-page fit)"
+          aria-label="Resume PDF viewer"
           className="
             block                        /* removes inline gap */
             w-full                       /* fill the container width */
@@ -61,6 +61,7 @@ export default function Resume() {
           style={{ aspectRatio: PAGE_ASPECT }}
         >
           {/* Fallback if inline PDFs aren’t supported */}
+          {/* Found a problem on iOS Safari where the embed pdf will display the pdf with a transparent background, i dont think its fixable with code? */}
           <p className="text-white/90">
             Your browser can’t display PDFs inline.{" "}
             <a
