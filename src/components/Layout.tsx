@@ -1,50 +1,65 @@
 // src/components/Layout.tsx
-// Transparent header on top of your background image, optional title/subtitle,
-// and your ORIGINAL Footer (with socials + styling).
+// Transparent header on top of a real background-image layer.
+// Uses Next/Image with "fill + object-cover" so it always fills the screen.
 
-import type { ReactNode } from "react"; // 1) Type for children
-import SiteHeader from "./SiteHeader"; // 2) The transparent header we just set up
-import Footer from "./Footer"; // 3) ✅ Your original Footer component
+import type { ReactNode } from "react"; // 1) Types for children props.
+import Image from "next/image"; // 2) Next.js <Image> for optimized, responsive images.
+import SiteHeader from "./SiteHeader"; // 3) Your existing transparent header.
+import Footer from "./Footer"; // 4) Your existing footer with socials.
 
 type LayoutProps = {
-  title?: string; // 4) Optional page title
-  subtitle?: string; // 5) Optional page subtitle
-  children?: ReactNode; // 6) Optioanl Page body content
+  title?: string; // 5) Optional page title (shows under the header).
+  subtitle?: string; // 6) Optional page subtitle.
+  children?: ReactNode; // 7) Main content children.
 };
 
 export default function Layout({ title, subtitle, children }: LayoutProps) {
   return (
     <div
       className="
-        flex min-h-[100svh] w-full flex-col
-        bg-cover bg-center bg-no-repeat
-        pb-[env(safe-area-inset-bottom)]
-        text-center
+        relative                          /* 8) Needed so the <Image fill> can position inside this box. */
+        flex flex-col text-center         /* 9) Same column layout you had (header -> content -> footer). */
+        min-h-dvh w-[100dvw]              /* 10) Dynamic viewport units: track real visible area on mobile. */
+        overflow-hidden                   /* 11) Hides 1–2px overflows during rotation/toolbars. */
+        bg-black                          /* 12) Fallback color while the image is loading. */
+        pb-[env(safe-area-inset-bottom)]  /* 13) Keep safe-area padding for iOS home indicator. */
       "
-      style={{ backgroundImage: 'url("/images/Background.jpg")' }} // 7) Keep your exact background
     >
-      {/* 8) Transparent header with always-visible hamburger */}
-      <SiteHeader />
+      {/* Background image that always covers and "zooms" to remove borders */}
+      <Image
+        src="/images/Background.jpg" // 14) Your existing image (public/images/Background.jpg).
+        alt="" // 15) Decorative background -> leave alt empty for a11y.
+        fill // 16) Expand to fill the parent (which is "relative").
+        priority // 17) Preload since it’s above-the-fold; prevents white flash.
+        sizes="100vw" // 18) Browser hint: image spans the full viewport width.
+        className="
+          pointer-events-none             /* 19) Let clicks pass through to links/content above. */
+          select-none                     /* 20) Avoid long-press save on mobile. */
+          object-cover                    /* 21) CRITICAL: scale/crop to fully cover the box (no gutters). */
+          object-center                   /* 22) Keep the focal point centered; tweak below if needed. */
+        "
+      />
 
-      {/* 9) Optional heading section under the header (no banner bg) */}
-      {title && (
-        <h1 className="m-0 text-2xl font-['Times'] font-bold sm:text-3xl text-white">
-          {title}
-        </h1>
-      )}
-      {subtitle && (
-        <p className="mt-1 text-base font-['Times'] opacity-90 sm:text-1x1 text-white">
-          {subtitle}
-        </p>
-      )}
-
-      {/* 10) Main page content */}
-      <main className="mx-auto font-['Times'] w-full max-w-5xl flex-1 px-4 py-6">
-        {children}
-      </main>
-
-      {/* 11) ✅ Your social-icon footer exactly as before */}
-      <Footer />
+      {/* Foreground content goes above the image */}
+      <div className="relative z-10 flex flex-1  w-full flex-col">
+        {" "}
+        {/* 23) Ensure header/content/footer are above the bg layer. */}
+        <SiteHeader /> {/* 24) Transparent header as before. */}
+        {title && (
+          <h1 className="m-0 text-2xl font-['Times'] font-bold sm:text-3xl text-white">
+            {title}
+          </h1>
+        )}
+        {subtitle && (
+          <p className="mt-1 text-base font-['Times'] opacity-90 sm:text-1x1 text-white">
+            {subtitle}
+          </p>
+        )}
+        <main className="mx-auto font-['Times'] w-full max-w-5xl px-4 py-6 flex-1">
+          {children}
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 }

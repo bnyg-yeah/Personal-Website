@@ -1,4 +1,4 @@
-// website-on-next/src/pages/Projects.js
+// website-on-next/src/pages/Projects.tsx
 
 import type { NextPage } from "next";
 import Layout from "../components/Layout";

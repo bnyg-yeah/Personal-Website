@@ -1,4 +1,4 @@
-// website-on-next/src/pages/_document.js
+// website-on-next/src/pages/_document.tsx
 
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
