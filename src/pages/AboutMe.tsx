@@ -6,7 +6,7 @@ import Layout from "../components/Layout";
 const AboutMe: NextPage = () => {
   return (
     <Layout title="About Me">
-      <p className="text-white text-3xl">ermmmmm....</p>
+      <p className="text-white text-3xl">About me coming soon</p>
     </Layout>
   );
 };

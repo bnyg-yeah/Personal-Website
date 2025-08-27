@@ -10,7 +10,7 @@ const ExperienceEducation: NextPage = () => {
       subtitle="My professional journey and academic background"
     >
       <div>
-        <p className="text-white text-3xl">ermmmmm....</p>
+        <p className="text-white text-3xl">Coming soon</p>
       </div>
     </Layout>
   );

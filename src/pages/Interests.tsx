@@ -6,7 +6,7 @@ import Layout from "../components/Layout";
 const Interests: NextPage = () => {
   return (
     <Layout title="Interests and Photos" subtitle="I like to play and have fun">
-      <p className="text-white text-3xl">ermmmmm....</p>
+      <p className="text-white text-3xl">Coming soon</p>
     </Layout>
   );
 };
