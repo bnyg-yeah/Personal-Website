@@ -7,9 +7,8 @@ export default function Resume() {
   // 1) Stable URL to your PDF (cached so it never recomputes)
   const pdfURL = useMemo(() => "/assets/Brighton-Young-Resume.pdf", []);
 
-  // 2) Aspect ratio of a single PDF page (width / height).
-  //    If your resume is US Letter, use 8.5 / 11.
-  const PAGE_ASPECT = useMemo(() => "8.5 / 11", []);
+  // 2) Aspect ratio, through trial and error, 11.33x15.30 does not allow for embedded scrolling 
+  const PAGE_ASPECT = useMemo(() => "11.33 / 15.30", []);
 
   return (
     <Layout
@@ -51,8 +50,7 @@ export default function Resume() {
             block                        /* removes inline gap */
             w-full                       /* fill the container width */
             rounded-md border border-white/20 shadow-xl
-            pointer-events-none          /* disable interaction/scroll on the PDF itself */
-            select-none                  /* avoid text selection inside plugin on desktop */
+            
             overflow-hidden              /* hide any tiny internal scrollbars/toolbars overflow */
             bg-black/10                  /* subtle background so edges feel intentional */
           "

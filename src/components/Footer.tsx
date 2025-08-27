@@ -24,13 +24,12 @@ const Footer: FC = () => {
           aria-label="Instagram"
           className="transition-opacity duration-300 hover:opacity-70"
         >
-          {/* 8) 30x30 icon; priority true mirrors your original. */}
+          {/* 8) 30x30 icon */}
           <Image
             src="/icons/socials1_icon.svg"
             alt="Instagram"
             width={30}
             height={30}
-            priority
           />
         </a>
 
@@ -47,6 +46,8 @@ const Footer: FC = () => {
             alt="LinkedIn"
             width={30}
             height={30}
+            loading="lazy"
+            priority={false}
           />
         </a>
       </div>
