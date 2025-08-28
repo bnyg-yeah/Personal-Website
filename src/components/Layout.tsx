@@ -25,20 +25,21 @@ export default function Layout({ title, subtitle, children }: LayoutProps) {
         pb-[env(safe-area-inset-bottom)]  /* 13) Keep safe-area padding for iOS home indicator. */
       "
     >
-      {/* Background image that always covers and "zooms" to remove borders */}
-      <Image
-        src="/images/Background.jpg" // 14) Your existing image (public/images/Background.jpg).
-        alt="" // 15) Decorative background -> leave alt empty for a11y.
-        fill // 16) Expand to fill the parent (which is "relative").
-        priority // 17) Preload since it’s above-the-fold; prevents white flash.
-        sizes="100vw" // 18) Browser hint: image spans the full viewport width.
-        className="
+      <div className="fixed inset-0 -z-0">
+        <Image
+          src="/images/Background.jpg" // 14) Your existing image (public/images/Background.jpg).
+          alt="" // 15) Decorative background -> leave alt empty for a11y.
+          fill // 16) Expand to fill the parent (which is "relative").
+          priority // 17) Preload since it’s above-the-fold; prevents white flash.
+          sizes="100vw" // 18) Browser hint: image spans the full viewport width.
+          className="
           pointer-events-none             /* 19) Let clicks pass through to links/content above. */
           select-none                     /* 20) Avoid long-press save on mobile. */
           object-cover                    /* 21) CRITICAL: scale/crop to fully cover the box (no gutters). */
           object-center                   /* 22) Keep the focal point centered; tweak below if needed. */
         "
-      />
+        />
+      </div>
 
       {/* Foreground content goes above the image */}
       <div className="relative z-10 flex flex-1  w-full flex-col">
@@ -55,7 +56,7 @@ export default function Layout({ title, subtitle, children }: LayoutProps) {
             {subtitle}
           </p>
         )}
-        <main className="mx-auto font-['Times'] w-full max-w-5xl px-4 py-6 flex-1">
+        <main className="mx-auto font-['Times'] w-full max-w-6xl px-4 py-6 flex-1 flex flex-col">
           {children}
         </main>
         <Footer />

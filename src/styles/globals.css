@@ -11,13 +11,6 @@ html, body {
 
 /* App container with background and full-height flex layout */
 .App {
-  /* Layered background: image + black overlay */
-  background-image:
-    url("/images/Background.jpg");
-    /* linear-gradient(black, black); */
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
 
   /* Full-screen flex layout */
   display: flex;
