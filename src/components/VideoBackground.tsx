@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 export default function VideoBackground() {
@@ -7,41 +7,11 @@ export default function VideoBackground() {
   const [frozenLastFrame, setFrozenLastFrame] = useState(false);
   const FREEZE_EPS = 0.08;
 
-  // Decide if we should include a 4K <source>
-  const canOffer4K = useMemo(() => {
-    // --- Screen size / density check ---
-    const vw = typeof window !== "undefined" ? window.innerWidth : 0;
-    const dpr =
-      typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1;
-    const effectiveWidth = vw * dpr;
-    const bigEnoughScreen = vw >= 1920 || effectiveWidth >= 3000;
-
-    // --- Network quality check ---
-    let strongConnection = true;
-    const navAny = typeof navigator !== "undefined" ? (navigator as any) : null;
-    const conn: any =
-      navAny?.connection || navAny?.mozConnection || navAny?.webkitConnection;
-
-    if (conn) {
-      const type = String(conn.effectiveType || "").toLowerCase();
-      const downlink = Number(conn.downlink || 0);
-      const saveData = Boolean(conn.saveData);
-
-      if (saveData) strongConnection = false;
-      else if (type.includes("2g") || type === "slow-2g" || type === "3g")
-        strongConnection = false;
-      else if (downlink && downlink < 5) strongConnection = false;
-    }
-
-    // ✅ Only return true if BOTH screen + network checks pass
-    return bigEnoughScreen && strongConnection;
-  }, []);
-
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
 
-    v.play().catch(() => {}); // Try autoplay
+    v.play().catch(() => {}); // try autoplay
 
     const onPlaying = () => setStarted(true);
     const onTimeUpdate = () => {
@@ -88,15 +58,6 @@ export default function VideoBackground() {
         autoPlay
         preload="metadata"
       >
-        {/* 4K only if both conditions satisfied */}
-        {canOffer4K && (
-          <source
-            src="/videos/VideoBackground4kH264.mp4"
-            type="video/mp4"
-            media="(min-width: 1920px)"
-          />
-        )}
-
         {/* 1080p fallback for larger screens */}
         <source
           src="/videos/VideoBackground1080H264.mp4"
