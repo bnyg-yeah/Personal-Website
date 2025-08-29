@@ -66,7 +66,7 @@ const AboutMe: NextPage = () => {
             <span className="bg-gradient-to-b from-transparent via-black/15 to-transparent px-1 py-0">
               I aim to apply these experiences to design innovative,
               human-centered AI solutions. I am driven by impact, collaboration,
-              and continuous learning.
+              and <span className="font-semibold">life-long learning</span>.
             </span>
           </p>
         </div>

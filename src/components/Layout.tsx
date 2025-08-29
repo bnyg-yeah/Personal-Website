@@ -11,9 +11,10 @@ type LayoutProps = {
   title?: string; // 5) Optional page title (shows under the header).
   subtitle?: string; // 6) Optional page subtitle.
   children?: ReactNode; // 7) Main content children.
+  background?: ReactNode; //for custom backgrounds per page
 };
 
-export default function Layout({ title, subtitle, children }: LayoutProps) {
+export default function Layout({ title, subtitle, children, background }: LayoutProps) {
   return (
     <div
       className="
@@ -26,19 +27,23 @@ export default function Layout({ title, subtitle, children }: LayoutProps) {
       "
     >
       <div className="fixed inset-0 -z-0">
-        <Image
-          src="/images/Background.jpg" // 14) Your existing image (public/images/Background.jpg).
-          alt="" // 15) Decorative background -> leave alt empty for a11y.
-          fill // 16) Expand to fill the parent (which is "relative").
-          priority // 17) Preload since it’s above-the-fold; prevents white flash.
-          sizes="100vw" // 18) Browser hint: image spans the full viewport width.
-          className="
+        {background ? (
+          background
+        ) : (
+          <Image
+            src="/images/Background.jpg" // 14) Your existing image (public/images/Background.jpg).
+            alt="" // 15) Decorative background -> leave alt empty for a11y.
+            fill // 16) Expand to fill the parent (which is "relative").
+            priority // 17) Preload since it’s above-the-fold; prevents white flash.
+            sizes="100vw" // 18) Browser hint: image spans the full viewport width.
+            className="
           pointer-events-none             /* 19) Let clicks pass through to links/content above. */
           select-none                     /* 20) Avoid long-press save on mobile. */
           object-cover                    /* 21) CRITICAL: scale/crop to fully cover the box (no gutters). */
           object-center                   /* 22) Keep the focal point centered; tweak below if needed. */
         "
-        />
+          />
+        )}
       </div>
 
       {/* Foreground content goes above the image */}
