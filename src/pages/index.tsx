@@ -10,7 +10,7 @@ export default function Home() {
     <Layout
       title="Brighton Young .dev"
       subtitle="Explore my work and projects"
-      background={<VideoBackground />}
+      // background={<VideoBackground />}
     />
   );
 }
