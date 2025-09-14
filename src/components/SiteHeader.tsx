@@ -8,7 +8,7 @@ type NavItem = { href: `/${string}`; label: string };
 const DESKTOP_NAV: NavItem[] = [
   { href: "/", label: "Home" },
   { href: "/AboutMe", label: "About" },
-  { href: "/projects/Projects", label: "Projects" },
+  { href: "/Projects", label: "Projects" },
   { href: "/Resume", label: "Résumé" },
 ];
 
