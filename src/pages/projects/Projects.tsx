@@ -1,4 +1,4 @@
-// website-on-next/src/pages/Projects.tsx
+// website-on-next/src/pages/projects/Projects.tsx
 
 import type { NextPage } from "next";
 import Layout from "../../components/Layout";
@@ -10,10 +10,10 @@ type Project = {
   name: string; //display title on the card
   summary: string;
   tech: string[]; //tech badges
+  role: string; //role in the project
   image?: string; //optional thumbnail
   github?: string; //optional github repo
   demo?: string; //optional live demo link
-  role?: string; //optional role in the project
   highlights?: string[]; //optional bullets for key features
 };
 
@@ -24,6 +24,43 @@ const projects: Project[] = [
 
   //Project 1
   {
+    slug: "vision-detection",
+    name: "Vision-Based Wildlife & Hazard Monitor w/ SAIC",
+    summary:
+      "Multi-modal detection (vision, audio, motion) with an HCI dashboard to alert supervisors to animals, people, and hazards.",
+    tech: [
+      "Computer Vision",
+      "Machine Learning",
+      "Audio Analysis",
+      "Dashboard UX",
+      "Mapping",
+    ],
+    role: "Stakeholder liaison and Vision AI/ML Integration Lead",
+  },
+
+  {
+    slug: "illegal-vessels",
+    name: "Vessel Behaviour Detector",
+    summary:
+      "Flags suspicious maritime behaviour from AIS data. Optimizes a machine learning algorithm that overlays geographical and regulatory context with vessel's dark activity, loitering, rendezvous, and abnormal routes ",
+    tech: [
+      "Time Series",
+      "Geospatial",
+      "Anomaly Detection",
+      "Semi-/Unsupervised ML",
+    ],
+    role: "Software and Technical Lead, Dataset Pattern Miner",
+  },
+
+  {
+    slug: "movie-ai",
+    name: "Cinna",
+    summary: "All-in-one movie planner with AI-tailored reviews, smart theater/seat picks, seat-view generator, value ticket finder, and calendar integration.",
+    tech: ["LLM Summarization", "Recommenders", "Seat-Map Rendering", "APIs"],
+    role: "Project Lead, Backend Integrations",
+  },
+
+  {
     slug: "iOS-fitness",
     name: "iOS Fitness and Nutrition Tracker",
     summary:
@@ -31,10 +68,10 @@ const projects: Project[] = [
     tech: [
       "iOS",
       "Swift/SwiftUI",
-      "Barcode scanning",
+      "Barcode Scanning",
       "Nutrionix API",
-      "YouTube integration",
-      "PDF reports",
+      "YouTube Integration",
+      "PDF Reports",
     ],
     image: "/images/projects/iOS-fitness/thumbnail.PNG",
     role: "Backend Lead and UX Overseer",
@@ -56,7 +93,7 @@ const projects: Project[] = [
     ],
     image: "/images/projects/runaway/thumbnail.jpeg",
     github: "https://github.com/bnyg-yeah/Runaway-project",
-    role: "Solo Developer",
+    role: "Sole Developer",
   },
 
   // {
@@ -64,7 +101,7 @@ const projects: Project[] = [
   //   name: "",
   //   summary: "",
   //   tech: [],
-  // }
+  // },
 ];
 
 const Projects: NextPage = () => {
