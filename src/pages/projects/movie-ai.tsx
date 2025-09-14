@@ -20,7 +20,7 @@ const Section: React.FC<{ title: string; children: React.ReactNode }> = ({ title
 
 const Cinna: NextPage = () => {
   // 9) Meta & constants.
-  const title = "Cinna — AI Movie Helper";
+  const title = "WIP - Cinna — AI Movie Helper";
   const tagline =
     "Condensed, preference-aware reviews + smart theater/room and seat picks, price value, and calendar-aware showtimes.";
   const hero = "/images/projects/cinna-hero.jpg";

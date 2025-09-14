@@ -25,9 +25,9 @@ const Section: React.FC<{ title: string; children: React.ReactNode }> = ({
 
 const IllegalVessels: NextPage = () => {
   // 9) Page meta & constants.
-  const title = "AIS Vessel Behavior Detection (ML Class Project)";
+  const title = "WIP - Vessel Behaviour Detector";
   const tagline =
-    "Detect suspicious maritime patterns from AIS streams: dark activity, loitering, rendezvous, and abnormal routes.";
+    "An ML pipeline to processes raw AIS data and detects suspicious vessel behaviors (dark activity, loitering, rendezvous, abnormal path deviations) using trajectory and zone-based features with rule/context filters.";
   const hero = "/images/projects/ais-ml-hero.jpg";
   const period = "2025";
 

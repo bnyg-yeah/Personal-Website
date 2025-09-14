@@ -26,7 +26,7 @@ const Section: React.FC<{ title: string; children: React.ReactNode }> = ({
 // 9) The actual page component; Next.js will render this for the route.
 const VisionDetection: NextPage = () => {
   // 10) Constant strings keep JSX tidy; tweak copy here as needed.
-  const title = "Vision-Based Wildlife & Hazard Detection (Capstone w/ SAIC)";
+  const title = "WIP - Vision-Based Wildlife & Hazard Detection (Capstone w/ SAIC)";
   const tagline =
     "Multi-modal detections + interactive HCI dashboard for ranger safety—translatable to security/defense scenarios.";
   const hero = "/images/projects/vision-capstone-hero.jpg"; // 11) Path inside /public.
