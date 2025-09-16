@@ -102,9 +102,23 @@ const projects: Project[] = [
     name: "BrightonYoung.dev",
     summary:
       "My personal website for displaying everything about me and my works. Deployed on brightonyoung.dev.",
-    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Domain Management", "UI/UX Design", "Domain Registrar", "Web Deployment", "DNS", "Network Security", "Google Search Console",],
+    tech: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Domain Management",
+      "UI/UX Design",
+      "Domain Registrar",
+      "Web Deployment",
+      "DNS",
+      "Network Security",
+      "Google Search Console",
+    ],
+    image: "/images/projects/personal-website/thumbnail.png",
     role: "Sole Developer",
-    demo: "www.brightonyoung.dev"
+    demo: "https://brightonyoung.dev",
+    github: "https://github.com/bnyg-yeah/Personal-Website",
   },
 
   // {
