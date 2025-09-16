@@ -102,9 +102,9 @@ const projects: Project[] = [
     name: "BrightonYoung.dev",
     summary:
       "My personal website for displaying everything about me and my works. Deployed on brightonyoung.dev.",
-    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Domain Management", "UI/UX Design", "Porkbun", "Netlify", "DNS", "Network Security", "Google Search Console",],
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Domain Management", "UI/UX Design", "Domain Registrar", "Web Deployment", "DNS", "Network Security", "Google Search Console",],
     role: "Sole Developer",
-    demo: "brightonyoung.dev"
+    demo: "www.brightonyoung.dev"
   },
 
   // {
