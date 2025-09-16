@@ -55,7 +55,8 @@ const projects: Project[] = [
   {
     slug: "movie-ai",
     name: "Cinna",
-    summary: "All-in-one movie planner with AI-tailored reviews, smart theater/seat picks, seat-view generator, value ticket finder, and calendar integration.",
+    summary:
+      "All-in-one movie planner with AI-tailored reviews, smart theater/seat picks, seat-view generator, value ticket finder, and calendar integration.",
     tech: ["LLM Summarization", "Recommenders", "Seat-Map Rendering", "APIs"],
     role: "Project Lead, Backend Integrations",
   },
@@ -96,6 +97,16 @@ const projects: Project[] = [
     role: "Sole Developer",
   },
 
+  {
+    slug: "personal-website",
+    name: "BrightonYoung.dev",
+    summary:
+      "My personal website for displaying everything about me and my works. Deployed on brightonyoung.dev.",
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Domain Management", "UI/UX Design", "Porkbun", "Netlify", "DNS", "Network Security", "Google Search Console",],
+    role: "Sole Developer",
+    demo: "brightonyoung.dev"
+  },
+
   // {
   //   slug: "",
   //   name: "",
@@ -113,7 +124,6 @@ const Projects: NextPage = () => {
       {projects.length === 0 ? (
         <p className="text-white/80 text-lg">Projects coming soon…</p>
       ) : (
-
         <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {/* 11) Map each project to a <li> so it’s a semantic list of cards. */}
           {projects.map((p) => (
