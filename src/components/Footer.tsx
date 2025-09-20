@@ -50,10 +50,31 @@ const Footer: FC = () => {
             priority={false}
           />
         </a>
+
+        {/*GitHub icon*/}
+        <a
+          href="https://github.com/bnyg-yeah"
+          target="_blank"
+          rel="noopener noreferred"
+          aria-label="GitHub"
+          className="transition-opacity duration-300 hover:opacity-70"
+        >
+          <Image
+            src="/icons/socials3_icon.svg"
+            alt="GitHub"
+            width={30}
+            height={30}
+            loading="lazy"
+            priority={false}
+          />
+        </a>
       </div>
 
       {/* 10) Footer message: white, tiny, no extra margins (like your CSS). */}
-      <p className="m-0 text-xs">Website created by Brighton Young. Please contact me at brightonyoung.dev@gmail.com</p>
+      <p className="m-0 text-xs">
+        Website created by Brighton Young. Please contact me at
+        brightonyoung.dev@gmail.com
+      </p>
     </footer>
   );
 };

@@ -27,15 +27,17 @@ const projects: Project[] = [
     slug: "vision-detection",
     name: "Vision-Based Wildlife & Hazard Monitor w/ SAIC",
     summary:
-      "Multi-modal detection (vision, audio, motion) with an HCI dashboard to alert supervisors to animals, people, and hazards.",
+      "Multi-modal ML monitoring system with an HCI dashboard alerting supervisors to wildlife, people, and hazards.",
     tech: [
       "Computer Vision",
-      "Machine Learning",
-      "Audio Analysis",
+      "Machine Learning Pipeline",
+      "Data Cleaning and Visualization",
       "Dashboard UX",
       "Mapping",
+      "Live-Feeds",
     ],
-    role: "Stakeholder liaison and Vision AI/ML Integration Lead",
+    role: "Stakeholder liaison and Vision ML Integration Lead",
+    image: "/images/projects/vision-detection/thumbnail.png",
   },
 
   {
@@ -45,8 +47,8 @@ const projects: Project[] = [
       "Flags suspicious maritime behaviour from AIS data. Optimizes a machine learning algorithm that overlays geographical and regulatory context with vessel's dark activity, loitering, rendezvous, and abnormal routes ",
     tech: [
       "Time Series",
-      "Geospatial",
       "Anomaly Detection",
+      "Data Cleaning and Validation",
       "Semi-/Unsupervised ML",
     ],
     role: "Software and Technical Lead, Dataset Pattern Miner",
@@ -57,8 +59,17 @@ const projects: Project[] = [
     name: "Cinna",
     summary:
       "All-in-one movie planner with AI-tailored reviews, smart theater/seat picks, seat-view generator, value ticket finder, and calendar integration.",
-    tech: ["LLM Summarization", "Recommenders", "Seat-Map Rendering", "APIs"],
-    role: "Project Lead, Backend Integrations",
+    tech: [
+      "OpenAI API",
+      "Summarizer System",
+      "Recommender System",
+      "AI Image Generation",
+      "REST APIs",
+      "Full-Stack",
+      "Personalization and Preference Modeling",
+      "UI/UX and Accessibility",
+    ],
+    role: "Project Lead, Backend Integration",
   },
 
   {
@@ -183,7 +194,7 @@ const Projects: NextPage = () => {
                 {p.tech.map((t) => (
                   <span
                     key={t}
-                    className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/90"
+                    className="rounded-full bg-white/20 px-3 py-1 text-xs text-white/90"
                   >
                     {t}
                   </span>

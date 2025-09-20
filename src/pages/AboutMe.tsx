@@ -50,7 +50,7 @@ const AboutMe: NextPage = () => {
             </p>
             <ul className="list-disc list-inside text-xl space-y-1">
               <li className="bg-gradient-to-b from-transparent via-black/15 to-transparent pl-4 py-2">
-                <span className="font-semibold">Nature HCI</span>{" "}
+                <span className="font-semibold">Nature HCI Capstone</span>{" "}
                 <span className="italic text-base">
                   (Dr. Scott McCrickard and SAIC Inc.)
                 </span>{" "}
@@ -59,7 +59,7 @@ const AboutMe: NextPage = () => {
               </li>
               <li className="bg-gradient-to-b from-transparent via-black/15 to-transparent pl-4 py-2">
                 <span className="font-semibold">
-                  Creativity in Generative AI
+                  Creativity in Generative AI Capstone
                 </span>{" "}
                 <span className="italic text-base">
                   (Dr. Pinar Yanardag Delul)
