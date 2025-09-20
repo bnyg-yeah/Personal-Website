@@ -74,7 +74,7 @@ const projects: Project[] = [
 
   {
     slug: "iOS-fitness",
-    name: "iOS Fitness and Nutrition Tracker",
+    name: "Calorie Quest",
     summary:
       "Native iOS app for tracking and managing health, logging foods, setting macro goals, and generating reports. Designed for intuitive user interaction.",
     tech: [
@@ -145,29 +145,42 @@ const Projects: NextPage = () => {
     <Layout
       title="Featured Projects"
       subtitle="Brighton Young's featured works"
+      contentWidth="wide"
     >
       {projects.length === 0 ? (
         <p className="text-white/80 text-lg">Projects coming soon…</p>
       ) : (
         <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {/* 11) Map each project to a <li> so it’s a semantic list of cards. */}
+          {/* Map each project to a <li> so it’s a semantic list of cards. */}
           {projects.map((p) => (
             <li
               key={p.slug}
-              // 12) Card styling matches your existing look (rounded, subtle border, soft bg).
+              // Card styling matches your existing look (rounded, subtle border, soft bg).
               className="
                 rounded-2xl border border-white/10 bg-white/5 p-5
                 shadow-sm transition hover:translate-y-[-2px] hover:shadow-md
                 focus-within:ring-2 focus-within:ring-white/30
               "
             >
-              {/* 15) Project title as an <h3> for proper document outline. */}
-              <h3 className="text-xl font-semibold text-white">{p.name}</h3>
+              {/* Project title as an <h3> for proper document outline. */}
+              <h3
+                className="text-xl font-semibold text-white"
+                style={{
+                  textShadow: "0 1.5px 5px rgba(0,0,0,0.6)", // subtle feather halo
+                }}
+              >
+                {p.name}
+              </h3>
 
               {/* 16) Optional role line to clarify your contribution. */}
               {p.role && (
-                <p className="mt-1 text-sm text-white/70">
-                  <span className="font-medium"></span> {p.role}
+                <p
+                  className="mt-1 text-sm text-white/70"
+                  style={{
+                    textShadow: "0 0 5px rgba(0,0,0,0.5)", // subtle feather halo
+                  }}
+                >
+                  {p.role}
                 </p>
               )}
 
@@ -187,7 +200,15 @@ const Projects: NextPage = () => {
               )}
 
               {/* 17) Short summary for quick scanning. */}
-              <p className="mt-2 text-white/80">{p.summary}</p>
+              {/* <p className="mt-2 text-white/80">{p.summary}</p> */}
+              <p
+                className="mt-2 text-white/85"
+                style={{
+                  textShadow: "0 0 10px rgba(0,0,0,0.6)", // softer + a little wider
+                }}
+              >
+                {p.summary}
+              </p>
 
               {/* 18) Tech badges. */}
               <div className="mt-3 flex flex-wrap gap-2 justify-center">

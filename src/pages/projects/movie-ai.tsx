@@ -43,11 +43,16 @@ const Cinna: NextPage = () => {
 
       {/* 12) Breadcrumb */}
       <div className="mb-4 text-sm">
-        <Link href="/projects/Projects" className="text-sky-300 hover:underline underline-offset-4">← Back to Projects</Link>
+        <Link
+          href="/projects/Projects"
+          className="text-sky-300 hover:underline underline-offset-4"
+        >
+          ← Back to Projects
+        </Link>
       </div>
 
       {/* 13) Hero image with object-contain */}
-      <div className="relative mx-auto mb-6 w-full max-w-4xl">
+      <div className="relative mb-6 ">
         <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/10 bg-black">
           <Image
             src={hero}
@@ -60,48 +65,66 @@ const Cinna: NextPage = () => {
       </div>
 
       {/* 14) Tag rows */}
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-4">
+      <div className="flex flex-col items-center gap-4">
         <div className="flex flex-wrap justify-center gap-2">
           <Tag>{period}</Tag>
-          {roles.map((r) => <Tag key={r}>{r}</Tag>)}
+          {roles.map((r) => (
+            <Tag key={r}>{r}</Tag>
+          ))}
         </div>
         <div className="flex flex-wrap justify-center gap-2">
-          {stack.map((t) => <Tag key={t}>{t}</Tag>)}
+          {stack.map((t) => (
+            <Tag key={t}>{t}</Tag>
+          ))}
         </div>
       </div>
 
       {/* 15) Content sections */}
-      <div className="mx-auto mt-6 w-full max-w-4xl text-left">
+      <div className="mt-6 text-left">
         <Section title="Overview">
           <p>
-            CINNAH reduces decision fatigue by aggregating reviews, showtimes, prices, seat maps, and calendars—then recommending the best
-            movie, theater/room, and seats for your taste, schedule, and budget.
+            CINNAH reduces decision fatigue by aggregating reviews, showtimes,
+            prices, seat maps, and calendars—then recommending the best movie,
+            theater/room, and seats for your taste, schedule, and budget.
           </p>
         </Section>
 
         <Section title="Problem">
           <p>
-            Picking a movie + theater + seats across different sites is tedious, and generic reviews rarely focus on what each viewer cares about.
+            Picking a movie + theater + seats across different sites is tedious,
+            and generic reviews rarely focus on what each viewer cares about.
           </p>
         </Section>
 
         <Section title="Solution">
           <p>
-            Preference-aware review digests (e.g., emphasize CGI if that’s your priority), explainable recommendations for theater/room
-            (like IMAX for big-screen titles) and seats, best-value ticket suggestions, and calendar sync for groups.
+            Preference-aware review digests (e.g., emphasize CGI if that’s your
+            priority), explainable recommendations for theater/room (like IMAX
+            for big-screen titles) and seats, best-value ticket suggestions, and
+            calendar sync for groups.
           </p>
         </Section>
 
         <Section title="Features">
           <div>
-            <h3 className="text-lg font-medium text-white">AI reviews & recommendations</h3>
+            <h3 className="text-lg font-medium text-white">
+              AI reviews & recommendations
+            </h3>
             <ul className="ml-4 mt-2 list-disc space-y-1">
-              <li>LLM-condensed, tailored review summaries with de-biasing filters and strict no-hallucination policy</li>
-              <li>Content- and context-aware recommenders (history, mood, time, location)</li>
+              <li>
+                LLM-condensed, tailored review summaries with de-biasing filters
+                and strict no-hallucination policy
+              </li>
+              <li>
+                Content- and context-aware recommenders (history, mood, time,
+                location)
+              </li>
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-medium text-white">Theaters, seats, and pricing</h3>
+            <h3 className="text-lg font-medium text-white">
+              Theaters, seats, and pricing
+            </h3>
             <ul className="ml-4 mt-2 list-disc space-y-1">
               <li>Seat-view generator from your exact row/seat</li>
               <li>Finds best-value tickets across nearby theaters</li>
@@ -109,7 +132,9 @@ const Cinna: NextPage = () => {
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-medium text-white">Calendars & groups</h3>
+            <h3 className="text-lg font-medium text-white">
+              Calendars & groups
+            </h3>
             <ul className="ml-4 mt-2 list-disc space-y-1">
               <li>Imports your calendar and checks group availability</li>
               <li>Suggests times that actually fit schedules</li>
@@ -119,13 +144,17 @@ const Cinna: NextPage = () => {
 
         <Section title="Architecture">
           <p>
-            Ingestion → normalization → ranking/recommendation → explainable UI. Tokenized calendar/ticketing access; provider-agnostic seat maps.
+            Ingestion → normalization → ranking/recommendation → explainable UI.
+            Tokenized calendar/ticketing access; provider-agnostic seat maps.
           </p>
         </Section>
 
         <Section title="Status & Next Steps">
           <ul className="ml-4 list-disc space-y-1">
-            <li><strong>Status:</strong> In design/prototyping; integrating partners and datasets</li>
+            <li>
+              <strong>Status:</strong> In design/prototyping; integrating
+              partners and datasets
+            </li>
             <li>Expand provider coverage for seat maps and ticketing</li>
             <li>Cold-start strategies and diversity in results</li>
             <li>Latency budgets for snappy multi-API flows</li>

@@ -16,9 +16,9 @@ export default function Resume() {
       subtitle="Available for embedded web view and PDF download."
     >
       {/* Action bar: equal-width buttons, centered group */}
-      <div className="w-full">
+      <div>
         {/* Constrain the total width of the button pair so they look tidy */}
-        <div className="mx-auto mb-4 flex w-full max-w-md gap-3">
+        <div className="mx-auto mb-4 flex max-w-md gap-3">
           <a
             href={pdfURL}
             download="Brighton-Young-Resume.pdf"

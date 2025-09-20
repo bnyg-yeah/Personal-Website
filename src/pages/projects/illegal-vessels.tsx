@@ -66,7 +66,7 @@ const IllegalVessels: NextPage = () => {
       </div>
 
       {/* 13) Hero image (entire image visible) */}
-      <div className="relative mx-auto mb-6 w-full max-w-4xl">
+      <div className="relative mb-6">
         <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/10 bg-black">
           <Image
             src={hero}
@@ -79,7 +79,7 @@ const IllegalVessels: NextPage = () => {
       </div>
 
       {/* 14) Tag rows */}
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-4">
+      <div className="flex flex-col items-center gap-4">
         <div className="flex flex-wrap justify-center gap-2">
           <Tag>{period}</Tag>
           {roles.map((r) => (
@@ -94,7 +94,7 @@ const IllegalVessels: NextPage = () => {
       </div>
 
       {/* 15) README-like sections */}
-      <div className="mx-auto mt-6 w-full max-w-4xl text-left">
+      <div className="mt-6 text-left">
         <Section title="Overview">
           <p>
             We analyze AIS (shipboard broadcast on VHF) to surface potentially

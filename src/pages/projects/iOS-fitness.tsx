@@ -69,7 +69,7 @@ const IOSFitnessTracker: NextPage = () => {
       </div>
 
       {/* 18) Hero image container; object-contain ensures the entire image is visible (no cropping). */}
-      <div className="relative mx-auto mb-6 w-full max-w-4xl">
+      <div className="relative mb-6">
         <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/10 bg-black">
           <Image
             src={hero}
@@ -83,7 +83,7 @@ const IOSFitnessTracker: NextPage = () => {
       </div>
 
       {/* 19) Tag rows: period, roles, tech stack. */}
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-4">
+      <div className="flex flex-col items-center gap-4">
         <div className="flex flex-wrap justify-center gap-2">
           <Tag>{period}</Tag>
           {roles.map((r) => (
@@ -98,7 +98,7 @@ const IOSFitnessTracker: NextPage = () => {
       </div>
 
       {/* 20) Content sections — README-style but non-technical for recruiters. */}
-      <div className="mx-auto mt-6 w-full max-w-4xl text-left">
+      <div className="mt-6 text-left">
         <Section title="Overview">
           <p>
             A native iOS app for fast, accurate nutrition tracking: scan

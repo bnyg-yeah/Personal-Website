@@ -65,7 +65,7 @@ const VisionDetection: NextPage = () => {
       </div>
 
       {/* 17) Hero image block; object-contain ensures the entire image is visible */}
-      <div className="relative mx-auto mb-6 w-full max-w-4xl">
+      <div className="relative mb-6">
         <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/10 bg-black">
           <Image
             src={hero}
@@ -79,7 +79,7 @@ const VisionDetection: NextPage = () => {
       </div>
 
       {/* 18) Tag rows: period, roles, and stack */}
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-4">
+      <div className="flex flex-col items-center gap-4">
         <div className="flex flex-wrap justify-center gap-2">
           <Tag>{period}</Tag>
           {roles.map((r) => (
@@ -94,7 +94,7 @@ const VisionDetection: NextPage = () => {
       </div>
 
       {/* 19) Content sections; easy to scan like a README (without run instructions) */}
-      <div className="mx-auto mt-6 w-full max-w-4xl text-left">
+      <div className="mt-6 text-left">
         <Section title="Overview">
           <p>
             We prototype a ranger-facing dashboard that fuses simulated sensors

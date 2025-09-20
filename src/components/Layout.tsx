@@ -12,9 +12,23 @@ type LayoutProps = {
   subtitle?: string; // 6) Optional page subtitle.
   children?: ReactNode; // 7) Main content children.
   background?: ReactNode; //for custom backgrounds per page
+  contentWidth?: "default" | "wide" | "full";
 };
 
-export default function Layout({ title, subtitle, children, background }: LayoutProps) {
+export default function Layout({
+  title,
+  subtitle,
+  children,
+  background,
+  contentWidth = "default",
+}: LayoutProps) {
+  const widthClass =
+    contentWidth === "full"
+      ? "max-w-none" //no max width at all
+      : contentWidth === "wide"
+      ? "max-w-[90rem]" //1440px
+      : "max-w-6xl"; //default width setting
+
   return (
     <div
       className="
@@ -61,7 +75,16 @@ export default function Layout({ title, subtitle, children, background }: Layout
             {subtitle}
           </p>
         )}
-        <main className="mx-auto font-['Times'] w-full max-w-6xl px-4 py-6 flex-1 flex flex-col">
+        <main
+          className={`
+            mx-auto w-full ${widthClass}                             /* NEW (20): apply chosen max-width cap */
+            px-[max(1rem,env(safe-area-inset-left))]                 /* NEW (21): left safe-area/gutter */
+            pr-[max(1rem,env(safe-area-inset-right))]                /* NEW (22): right safe-area/gutter */
+            py-6
+            flex-1 flex flex-col
+            font-['Times']
+          `}
+        >
           {children}
         </main>
         <Footer />

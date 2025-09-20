@@ -69,7 +69,7 @@ const Runaway: NextPage = () => {
       </div>
 
       {/* 17) Hero image: show full image using object-contain (no cropping). */}
-      <div className="relative mx-auto mb-6 w-full max-w-4xl">
+      <div className="relative mb-6">
         <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/10 bg-black">
           <Image
             src={hero}
@@ -83,7 +83,7 @@ const Runaway: NextPage = () => {
       </div>
 
       {/* 18) Tag rows with roles and tech stack. */}
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-4">
+      <div className="flex flex-col items-center gap-4">
         <div className="flex flex-wrap justify-center gap-2">
           <Tag>{period}</Tag>
           {roles.map((r) => (
@@ -98,7 +98,7 @@ const Runaway: NextPage = () => {
       </div>
 
       {/* 19) Content sections — concise, outcome-focused. */}
-      <div className="mx-auto mt-6 w-full max-w-4xl text-left">
+      <div className="mt-6 text-left">
         <Section title="Overview">
           <p>
             Runaway is a live “portal” into any city: unit-aware weather with

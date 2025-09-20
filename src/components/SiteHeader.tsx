@@ -43,6 +43,7 @@ export default function SiteHeader() {
     <header
       ref={ref}
       className="
+        w-full
         sticky top-0 z-50
         text-white
         pt-[max(0.5rem,env(safe-area-inset-top))]
@@ -50,7 +51,8 @@ export default function SiteHeader() {
         pr-[max(1rem,env(safe-area-inset-right))]
       "
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
+      {/* what we had before, add back: mx-auto max-w-6xl  and take out: w-full*/}
+      <div className=" flex w-full items-center justify-between gap-4">
         <Link
           href="/"
           className="inline-flex items-center gap-2 no-underline text-white"

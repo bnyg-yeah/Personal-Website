@@ -26,10 +26,12 @@ const Footer: FC = () => {
         >
           {/* 8) 30x30 icon */}
           <Image
-            src="/icons/socials1_icon.svg"
+            src="/icons/socials1_icon.png"
             alt="Instagram"
             width={30}
             height={30}
+            loading="lazy"
+            priority={false}
           />
         </a>
 
@@ -55,7 +57,7 @@ const Footer: FC = () => {
         <a
           href="https://github.com/bnyg-yeah"
           target="_blank"
-          rel="noopener noreferred"
+          rel="noopener noreferrer"
           aria-label="GitHub"
           className="transition-opacity duration-300 hover:opacity-70"
         >
