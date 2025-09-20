@@ -125,12 +125,12 @@ const AboutMe: NextPage = () => {
         {/* mission statement */}
         <p
           // className="text-sky-100 text-2xl italic mt-auto"
-          className="text-2xl italic mt-auto"
+          className="text-xl italic mt-auto"
           style={{
             textShadow: "0 0 10px rgba(224,242,254,1)", // subtle feather halo
           }}
         >
-          &quot;I want to build beautiful algortihms.&quot;
+          &quot;I want to build beautiful programs.&quot;
         </p>
       </section>
     </Layout>
