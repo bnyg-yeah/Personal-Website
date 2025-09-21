@@ -26,7 +26,7 @@ export default function Layout({
     contentWidth === "full"
       ? "max-w-none" //no max width at all
       : contentWidth === "wide"
-      ? "max-w-[90rem]" //1440px
+      ? "max-w-[80rem]" //1440px
       : "max-w-6xl"; //default width setting
 
   return (

@@ -5,6 +5,7 @@ import Layout from "../components/Layout";
 import Link from "next/link";
 import Image from "next/image";
 
+//Project skeleton
 type Project = {
   slug: string; //unique and readable identifier for coding
   name: string; //display title on the card
@@ -140,6 +141,7 @@ const projects: Project[] = [
   // },
 ];
 
+//Page itself
 const Projects: NextPage = () => {
   return (
     <Layout

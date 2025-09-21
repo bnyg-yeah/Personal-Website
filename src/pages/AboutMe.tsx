@@ -130,7 +130,7 @@ const AboutMe: NextPage = () => {
             textShadow: "0 0 10px rgba(224,242,254,1)", // subtle feather halo
           }}
         >
-          &quot;I want to build beautiful programs.&quot;
+          &quot;I want to build beautiful products.&quot;
         </p>
       </section>
     </Layout>
