@@ -1,183 +1,166 @@
-// // website-on-next/src/pages/ExperienceEducation.tsx
+// website-on-next/src/pages/ExperienceEducation.tsx
 
 import type { NextPage } from "next"; // Types the Next.js page component
 import Layout from "../components/Layout"; // Shared page chrome (header, footer, SEO)
 
-// Shape for optional resource links (kept for future scaling; remove if unused)
-type LinkItem = {
-  // Define a small reusable type
-  label: string; // Button text (e.g., "Department")
-  href: string; // Destination URL
-};
-
 // Core content shape for each entry (works for Experience and Education)
 type Entry = {
-  // Define the data model for one entry
   id: string; // Stable id for React keys and deep links (#id)
   kind: "experience" | "education"; // Allows rendering two sections from one array
   role: string; // Your title (e.g., "Firefighter")
   org: string; // Org/institution (e.g., "Blacksburg Volunteer Fire Department")
   location: string; // City, State
   dates: string; // Human-readable range (e.g., "Feb 2023 – Dec 2025")
+  tags?: string[]; // Optional lightweight labels (skills/certs)
   lines: string[]; // Short sentences in your own voice (rendered as paragraphs)
   vignette?: string[]; // Optional 3–5 sentence story (progressive disclosure)
-  tags?: string[]; // Optional lightweight labels (skills/certs)
   links?: LinkItem[]; // Optional external links (buttons/anchors)
 };
+// Shape for optional resource links (kept for future scaling; remove if unused)
+type LinkItem = {
+  label: string; // Button text (e.g., "Department")
+  href: string; // Destination URL
+};
 
-// ❇️ DATA — Paste YOUR sentences (from the scaffolds). Leave placeholders commented until ready.
+// Experience and Education Data
 const entries: Entry[] = [
   {
-    id: "firefighter", // Deep-link target: /ExperienceEducation#firefighter
-    kind: "experience", // Group: experience
-    role: "Firefighter", // Title text
-    org: "Blacksburg Volunteer Fire Department", // Organization name
-    location: "Blacksburg, VA", // Location text
-    dates: "Feb 2023 – Dec 2025 (expected)", // Date range
-    lines: [
-      // "On shift, I handle [core duties] so our crew rolls in ~<2 minutes from tones.",
-      // "I rotate between [engine/truck roles]; when needed I [lead/coordinate under ICS].",
-      // "Certified ProBoard Firefighter I & II and HazMat Awareness after an intensive probation year (~3 trainings/week).",
-      // "Overnights average ~3–4 calls; I also staff VT football (~80k) for fire-safety coverage.",
-      // "Calm under pressure: decide quickly, communicate plainly, balance risk vs. gain.",
-      // "Operate under ICS with drivers, lieutenants, captains, chiefs—plus rescue, police, and neighboring departments.",
-      // "Lead station tours and safety demos at open houses.",
-      // "This work sharpened fast judgment, risk assessment, and crew communication.",
-    ],
-    vignette: [
-      // "Scene: first-due at a house fire, smoke to the floor—zero visibility.",
-      // "I advanced the line with my crew, kept comms tight, coordinated initial knockdown.",
-      // "We followed training and stabilized without overextending.",
-      // "Outcome: fast control, safe egress, clean handoff for overhaul.",
-    ],
-    tags: [
-      "ProBoard FF I", "ProBoard FF II", "HazMat Awareness", "ICS"
-    ],
+    id: "firefighter",
+    kind: "experience",
+    role: "Firefighter",
+    org: "Blacksburg Volunteer Fire Department",
+    location: "Blacksburg, VA",
+    dates: "Feb 2023 – Dec 2025",
+    tags: ["ProBoard FF I", "ProBoard FF II", "HazMat Awareness", "ICS"],
+    lines: [],
+    vignette: [],
     links: [
-      // { label: "Department", href: "https://example.com" },
+      {
+        label: "Blacksburg Fire",
+        href: "https://blacksburgfire.org/",
+      },
     ],
   },
   {
-    id: "resident-advisor", // Deep-link target: /ExperienceEducation#resident-advisor
-    kind: "experience", // Group: experience
-    role: "Resident Advisor", // Title text
-    org: "Virginia Tech — Pritchard, West & East Eggleston", // Org + halls
-    location: "Blacksburg, VA", // Location text
-    dates: "Aug 2022 – Dec 2025 (expected)", // Date range
-    lines: [
-      // "I support ~150+ residents each year—mentoring, mediating conflicts, and linking students to resources.",
-      // "Duty ~4 nights/month until 2 a.m. plus overnight phone; I also cover academic breaks.",
-      // "Trained in crisis response, mediation, Title IX, mental-health support, and mandated reporting (Clery); reports in Maxient.",
-      // "I design 5+ big programs/semester—community, wellbeing, real-talk—with packed turnouts and staff shout-outs.",
-      // "Clearly in charge, approachable from week one—so issues surface early when help works.",
-      // "Coordinate with counseling, conduct, housing, facilities, police, and fire/rescue to close loops fast.",
-      // "Our community earned Community of the Year after improvements in safety, cohesion, and participation.",
-      // "Live problem-solving with people—listening hard, untangling stories, finding durable agreements.",
-    ],
-    vignette: [
-      // "Several residents faced a felony incident; before formal steps, I met them to learn what was missing.",
-      // "They opened up because I balanced authority with care; I documented context others hadn’t captured.",
-      // "That report helped ensure a fair process while I guided them through conduct and legal steps with compassion and boundaries.",
-    ],
+    id: "resident-advisor",
+    kind: "experience",
+    role: "Resident Advisor",
+    org: "Virginia Tech",
+    location: "Blacksburg, VA",
+    dates: "Aug 2022 – Dec 2025",
     tags: [
-      // "Mediation", "Title IX", "Clery", "Maxient", "Event Design"
+      "Conflict Resolution & Mediation",
+      "Leadership & Mentorship",
+      "Resource Support",
+      "Collaboration",
+      "Community Impact",
     ],
+    lines: [],
+    vignette: [],
     links: [
-      // { label: "Housing & Residence Life", href: "https://example.com" },
+      {
+        label: "Residential Well-Being",
+        href: "https://rwb.vt.edu/",
+      },
     ],
   },
-
-  // Later: push education entries here with kind: "education"
   {
     id: "student",
     kind: "education",
     role: "Undergraduate Student",
-    org: "Virginia Tech",
-    location: "Blacksburg Virignia",
+    org: "Virginia Tech Department of Computer Science",
+    location: "Blacksburg, VA",
     dates: "August 2021 - December 2025",
-    lines: [],
+    tags: ["Major in Computer Science", "Minor in Human-Computer Interaction"],
+    lines: ["paragrph 1", "pargaphra 2"],
+    vignette: ["This is a story and about my experience"],
+    links: [
+      {
+        label: "Department of Computer Science",
+        href: "https://cs.vt.edu/",
+      },
+    ],
   },
 ];
 
-// Tiny tag renderer — inline, no extra components required
+// Tiny tag renderer
 function Tags({ list }: { list?: string[] }) {
-  // Accepts an optional list of strings
-  if (!list || list.length === 0) return null; // If no tags, render nothing
+  if (!list || list.length === 0) return null;
   return (
-    <p className="mt-1 text-xs text-white/60">
-      {" "}
-      {/* Subtle, single-line tag string */}
-      {list.join(" • ")} {/* Join tags with a mid-dot for readability */}
-    </p>
+    <div className="mt-1 flex flex-wrap justify-center gap-2">
+      {list.map((tag) => (
+        <span
+          key={tag}
+          // className="rounded-full border border-white/15 bg-white/5 px-2 py-0.5 text-xs text-white/70"
+          className="rounded-full border border-white/15 bg-white/5 px-2 py-0.5 text-xs text-white/75"
+          style={{
+            textShadow: "0 0 10px rgba(256,256,256,1)",
+          }}
+        >
+          {tag}
+        </span>
+      ))}
+    </div>
   );
 }
 
-// One entry row — no bullets; just tidy text blocks with spacing and dividers
+// One entry row
 function EntryRow({ item }: { item: Entry }) {
-  // Stateless functional component per entry
   return (
     <div id={item.id} role="listitem" className="py-5">
-      {" "}
-      {/* Vertical padding; anchorable by #id */}
       {/* Title line: Role @ Org */}
       <h3 className="text-base font-semibold text-white">
-        {" "}
-        {/* Semantic heading for SEO/accessibility */}
         {item.role} <span className="text-white/70">@ {item.org}</span>
       </h3>
-      {/* Meta line: location + dates */}
-      <p className="mt-0.5 text-sm text-white/60">
-        {" "}
-        {/* Muted to keep visual hierarchy */}
-        {item.location} • {item.dates}
+
+      {/* Meta line: location + gradient divider + dates */}
+      <p className="mt-0.5 flex items-center justify-center gap-2 text-sm text-white/60">
+        <span>{item.location}</span>
+        <span
+          aria-hidden
+          className="h-3 w-px bg-gradient-to-b from-transparent via-white/30 to-transparent"
+        />
+        <span>{item.dates}</span>
       </p>
-      {/* Optional tags */}
-      <Tags list={item.tags} /> {/* Renders tags only if present */}
-      {/* Your sentences as paragraphs — NO bullets, just clean text blocks */}
-      {item.lines.length > 0 && ( // Guard: render only if you’ve added lines
-        <div className="mt-3 space-y-1.5">
-          {" "}
-          {/* Stacked paragraphs with small gaps */}
-          {item.lines.map(
-            (
-              line,
-              i // Map each sentence to its own <p>
-            ) => (
-              <p key={i} className="text-white/90">
-                {line}
-              </p>
-            )
-          )}
+
+      {/* Tags */}
+      <Tags list={item.tags} />
+
+      {/* Sentences as paragraphs */}
+      {item.lines.length > 0 && (
+        <div className="mt-3 space-y-1.5 text-left">
+          {item.lines.map((line, i) => (
+            <p key={i} className="text-white/90">
+              {line}
+            </p>
+          ))}
         </div>
       )}
-      {/* Optional vignette — native disclosure keeps it accessible and JS-free */}
-      {item.vignette &&
-        item.vignette.length > 0 && ( // Guard: render only if you’ve added a story
-          <details className="mt-3">
-            {" "}
-            {/* Built-in, keyboard/AT friendly */}
-            <summary className="cursor-pointer text-sm font-medium text-sky-300">
-              Read story
-            </summary>
-            <div className="mt-2 space-y-2 text-white/85">
-              {" "}
-              {/* Story paragraphs with gentle spacing */}
-              {item.vignette.map((p, i) => (
-                <p key={i}>{p}</p> // Each sentence/paragraph of your vignette
-              ))}
-            </div>
-          </details>
-        )}
-      {/* Optional external links (anchors only if provided) */}
+
+      {/* Optional vignette */}
+      {item.vignette && item.vignette.length > 0 && (
+        <details className="mt-3 text-left">
+          <summary className="cursor-pointer text-sm font-medium text-sky-300">
+            Read story
+          </summary>
+          <div className="mt-2 space-y-2 text-white/85">
+            {item.vignette.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
+        </details>
+      )}
+
+      {/* Optional external links */}
       {item.links && item.links.length > 0 && (
-        <p className="mt-3">
+        <p className="mt-3 text-center">
           {item.links.map((lnk) => (
             <a
-              key={lnk.href} // Stable key per link
-              href={lnk.href} // Destination URL
-              target="_blank" // Open in new tab
-              rel="noopener noreferrer" // Security best practice with _blank
-              className="mr-3 inline-block text-sm text-white/80 underline underline-offset-4 hover:text-white"
+              key={lnk.href}
+              href={lnk.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center rounded-md border border-white/20 px-3 py-1.5 text-sm text-sky-300 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30 underline-offset-4"
             >
               {lnk.label}
             </a>
@@ -188,18 +171,16 @@ function EntryRow({ item }: { item: Entry }) {
   );
 }
 
-// Simple section wrapper — keeps markup consistent and semantic
+// Section wrapper
 function Section({
-  title, // Visible heading text
-  children, // Nested content (list items)
+  title,
+  children,
 }: {
   title: string;
   children: React.ReactNode;
 }) {
   return (
     <section className="space-y-4">
-      {" "}
-      {/* Vertical rhythm between heading and content */}
       <h2 className="text-2xl font-semibold text-white">{title}</h2>
       {children}
     </section>
@@ -207,9 +188,8 @@ function Section({
 }
 
 const ExperienceEducation: NextPage = () => {
-  // Page component typed with NextPage
-  const experience = entries.filter((e) => e.kind === "experience"); // Split: experience
-  const education = entries.filter((e) => e.kind === "education"); // Split: education
+  const experience = entries.filter((e) => e.kind === "experience");
+  const education = entries.filter((e) => e.kind === "education");
 
   return (
     <Layout title="Experience & Education" contentWidth="wide">
@@ -222,23 +202,11 @@ const ExperienceEducation: NextPage = () => {
           </div>
         </Section>
 
-        {/* EXPERIENCE — stacked list with subtle dividers, no bullets */}
         <Section title="Experience">
-          {" "}
-          {/* Section heading */}
-          <div
-            role="list" /* Semantic grouping for rows */
-            className="divide-y divide-white/10"
-          >
-            {" "}
-            {/* Thin dividers between rows */}
-            {experience.map(
-              (
-                item // Render each experience entry
-              ) => (
-                <EntryRow key={item.id} item={item} /> // Stateless row; clean and readable
-              )
-            )}
+          <div role="list" className="divide-y divide-white/10">
+            {experience.map((item) => (
+              <EntryRow key={item.id} item={item} />
+            ))}
           </div>
         </Section>
       </div>

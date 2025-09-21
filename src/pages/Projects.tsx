@@ -217,7 +217,11 @@ const Projects: NextPage = () => {
                 {p.tech.map((t) => (
                   <span
                     key={t}
-                    className="rounded-full bg-white/20 px-3 py-1 text-xs text-white/90"
+                    // className="rounded-full bg-white/20 px-3 py-1 text-xs text-white/90"
+                  className="rounded-full border border-white/15 bg-white/5 px-2 py-0.5 text-xs text-white/75"
+                    style={{
+                      textShadow: "0 0 10px rgba(256,256,256,1)", 
+                    }}
                   >
                     {t}
                   </span>
