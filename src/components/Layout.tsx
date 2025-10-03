@@ -1,17 +1,15 @@
 // src/components/Layout.tsx
-// Transparent header on top of a real background-image layer.
-// Uses Next/Image with "fill + object-cover" so it always fills the screen.
-
-import type { ReactNode } from "react"; // 1) Types for children props.
-import Image from "next/image"; // 2) Next.js <Image> for optimized, responsive images.
-import SiteHeader from "./SiteHeader"; // 3) Your existing transparent header.
-import Footer from "./Footer"; // 4) Your existing footer with socials.
+import type { ReactNode } from "react"; // Type for children props.
+import Image from "next/image"; // Next.js image optimization.
+import SiteHeader from "./SiteHeader"; // Your sticky header.
+import Footer from "./Footer"; // Your footer.
+import SocialsColumn from "./SocialsColumn"; // The floating rail.
 
 type LayoutProps = {
-  title?: string; // 5) Optional page title (shows under the header).
-  subtitle?: string; // 6) Optional page subtitle.
-  children?: ReactNode; // 7) Main content children.
-  background?: ReactNode; //for custom backgrounds per page
+  title?: string;
+  subtitle?: string;
+  children?: ReactNode;
+  background?: ReactNode;
   contentWidth?: "default" | "wide" | "full";
 };
 
@@ -24,47 +22,47 @@ export default function Layout({
 }: LayoutProps) {
   const widthClass =
     contentWidth === "full"
-      ? "max-w-none" //no max width at all
+      ? "max-w-none"
       : contentWidth === "wide"
-      ? "max-w-[80rem]" //1440px
-      : "max-w-6xl"; //default width setting
+      ? "max-w-[80rem]"
+      : "max-w-6xl";
 
   return (
     <div
       className="
-        relative                          /* 8) Needed so the <Image fill> can position inside this box. */
-        flex flex-col text-center         /* 9) Same column layout you had (header -> content -> footer). */
-        min-h-dvh w-[100dvw]              /* 10) Dynamic viewport units: track real visible area on mobile. */
-        overflow-hidden                   /* 11) Hides 1–2px overflows during rotation/toolbars. */
-        bg-black                          /* 12) Fallback color while the image is loading. */
-        pb-[env(safe-area-inset-bottom)]  /* 13) Keep safe-area padding for iOS home indicator. */
+        relative                          /* establishes stacking context for the bg image */
+        flex flex-col text-center         /* column layout for header -> main -> footer */
+        min-h-dvh w-[100dvw]              /* full viewport size with dynamic units */
+        overflow-hidden                   /* avoid tiny scrollbars from the bg layer */
+        bg-black                          /* fallback behind the bg image */
+        pb-[env(safe-area-inset-bottom)]  /* iOS safe area */
       "
     >
+      {/* Background image layer */}
       <div className="fixed inset-0 -z-0">
         {background ? (
           background
         ) : (
           <Image
-            src="/images/Background.jpg" // 14) Your existing image (public/images/Background.jpg).
-            alt="" // 15) Decorative background -> leave alt empty for a11y.
-            fill // 16) Expand to fill the parent (which is "relative").
-            priority // 17) Preload since it’s above-the-fold; prevents white flash.
-            sizes="100vw" // 18) Browser hint: image spans the full viewport width.
+            src="/images/Background.jpg"
+            alt="" /* decorative bg */
+            fill /* fill the parent */
+            priority /* preload */
+            sizes="100vw" /* full width hint */
             className="
-          pointer-events-none             /* 19) Let clicks pass through to links/content above. */
-          select-none                     /* 20) Avoid long-press save on mobile. */
-          object-cover                    /* 21) CRITICAL: scale/crop to fully cover the box (no gutters). */
-          object-center                   /* 22) Keep the focal point centered; tweak below if needed. */
-        "
+              pointer-events-none           /* clicks go to content above */
+              select-none                   /* no long-press save */
+              object-cover object-center    /* cover viewport nicely */
+            "
           />
         )}
       </div>
 
-      {/* Foreground content goes above the image */}
-      <div className="relative z-10 flex flex-1  w-full flex-col">
-        {" "}
-        {/* 23) Ensure header/content/footer are above the bg layer. */}
-        <SiteHeader /> {/* 24) Transparent header as before. */}
+      <SocialsColumn />
+
+      {/* Foreground content (above bg) */}
+      <div className="relative z-10 flex flex-1 w-full flex-col">
+        <SiteHeader /> {/* sticky header */}
         {title && (
           <h1 className="m-0 text-2xl font-['Times'] font-bold sm:text-3xl text-white">
             {title}
@@ -77,9 +75,9 @@ export default function Layout({
         )}
         <main
           className={`
-            mx-auto w-full ${widthClass}                             /* NEW (20): apply chosen max-width cap */
-            px-[max(1rem,env(safe-area-inset-left))]                 /* NEW (21): left safe-area/gutter */
-            pr-[max(1rem,env(safe-area-inset-right))]                /* NEW (22): right safe-area/gutter */
+            mx-auto w-full ${widthClass}
+            px-[max(1rem,env(safe-area-inset-left))]
+            pr-[max(1rem,env(safe-area-inset-right))]
             py-6
             flex-1 flex flex-col
             font-['Times']

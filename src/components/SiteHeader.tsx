@@ -1,10 +1,10 @@
 // src/components/SiteHeader.tsx
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useRouter } from "next/router";
 type NavItem = { href: `/${string}`; label: string };
 
+// Main page navigation
 const DESKTOP_NAV: NavItem[] = [
   { href: "/", label: "Home" },
   { href: "/AboutMe", label: "About" },
@@ -12,6 +12,7 @@ const DESKTOP_NAV: NavItem[] = [
   { href: "/Resume", label: "Résumé" },
 ];
 
+// Menu button for extra pages
 const MOBILE_EXTRA: NavItem[] = [
   { href: "/ExperienceEducation", label: "Experience & Education" },
   { href: "/References", label: "References" },
@@ -19,21 +20,24 @@ const MOBILE_EXTRA: NavItem[] = [
 ];
 
 export default function SiteHeader() {
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-  const router = useRouter();
+  const [open, setOpen] = useState(false); // state: mobile menu open/closed
+  const ref = useRef<HTMLDivElement>(null); // ref: to detect outside clicks
+  const router = useRouter(); // router: to highlight active link
 
   useEffect(() => {
     function onDocClick(e: MouseEvent) {
+      // handler: clicks outside the header
       if (ref.current && !ref.current.contains(e.target as Node))
         setOpen(false);
     }
     function onKey(e: KeyboardEvent) {
+      // handler: press Escape to close
       if (e.key === "Escape") setOpen(false);
     }
-    document.addEventListener("mousedown", onDocClick);
+    document.addEventListener("mousedown", onDocClick); // mount listeners
     document.addEventListener("keydown", onKey);
     return () => {
+      // cleanup listeners
       document.removeEventListener("mousedown", onDocClick);
       document.removeEventListener("keydown", onKey);
     };
@@ -51,23 +55,8 @@ export default function SiteHeader() {
         pr-[max(1rem,env(safe-area-inset-right))]
       "
     >
-      {/* what we had before, add back: mx-auto max-w-6xl  and take out: w-full*/}
-      <div className=" flex w-full items-center justify-between gap-4">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 no-underline text-white"
-        >
-          <Image
-            src="/icons/android-chrome-192x192.png"
-            alt="Site logo"
-            width={36}
-            height={36}
-            className="h-9 w-9 align-baseline object-contain shrink-0"
-            priority
-          />
-        </Link>
-
-        <div className="relative flex items-center gap-3">
+      <div className="flex w-full items-center justify-between gap-4">
+        <div className="relative flex items-center gap-3 ml-auto">
           <nav
             className="hidden items-center gap-6 sm:flex"
             aria-label="Primary"
@@ -123,7 +112,7 @@ export default function SiteHeader() {
                   onClick={() => setOpen(false)}
                 >
                   {/* Outer pill: gives the small black background sized to the label */}
-                  <span className="inline-block rounded-md bg-gray px-3 py-2 text-white shadow-md">
+                  <span className="inline-block rounded-md bg-black/90 px-3 py-2 text-white shadow-md">
                     {/* Inner span: width collapses to the text; we draw the divider INSIDE here */}
                     <span
                       className={
