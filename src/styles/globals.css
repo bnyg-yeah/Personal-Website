@@ -1,17 +1,17 @@
 /* website-on-next/src/styles/globals.css */
 @import "tailwindcss";
 
-
 /* Ensure full height layout */
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
-  font-family: 'Trebuchet MS', sans-serif;
+  font-family: "Trebuchet MS", sans-serif;
+  color: white;
 }
 
 /* App container with background and full-height flex layout */
 .App {
-
   /* Full-screen flex layout */
   display: flex;
   flex-direction: column;

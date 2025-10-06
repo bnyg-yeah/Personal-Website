@@ -24,14 +24,14 @@ export default function VideoBackground() {
       >
         {/* Desktop (>= 769px) */}
         <source
-          src="/videos/VideoBackground1080H264.mp4"
+          src="/videos/Whoosh.mp4"
           type="video/mp4"
           media="(min-width: 769px)"
         />
 
         {/* Mobile (<= 768px) */}
         <source
-          src="/videos/VideoBackground720H264.mp4"
+          src="/videos/Whoosh.mp4"
           type="video/mp4"
           media="(max-width: 768px)"
         />

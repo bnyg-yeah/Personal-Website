@@ -60,14 +60,14 @@ export default function Layout({
 
       <SocialsColumn />
 
-      {/* Foreground content (above bg) */}
       <div className="relative z-10 flex flex-1 w-full flex-col">
-        <SiteHeader /> {/* sticky header */}
+        <SiteHeader />
         {title && (
           <h1 className="m-0 text-2xl font-['Times'] font-bold sm:text-3xl text-white">
             {title}
           </h1>
         )}
+
         {subtitle && (
           <p className="mt-1 text-base font-['Times'] opacity-90 sm:text-1x1 text-white">
             {subtitle}
