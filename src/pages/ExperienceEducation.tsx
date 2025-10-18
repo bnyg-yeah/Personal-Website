@@ -118,7 +118,7 @@ function EntryRow({ item }: { item: Entry }) {
         <span>{item.location}</span>
         <span
           aria-hidden
-          className="h-3 w-px bg-gradient-to-b from-transparent via-white/30 to-transparent"
+          className="h-3 w-px bg-gradient-to-b from-transparent via-white/50 to-transparent"
         />
         <span>{item.dates}</span>
       </p>
