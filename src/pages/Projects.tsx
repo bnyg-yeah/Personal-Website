@@ -38,8 +38,9 @@ const projects: Project[] = [
       "Live-Feeds",
       "Remote Network System",
     ],
-    role: "Stakeholder liaison and Vision ML Developer",
+    role: "Stakeholder liaison and Vision ML Sole Developer",
     image: "/images/projects/vision-detection/thumbnail.png",
+    github: "https://github.com/bnyg-yeah/Vision-Detection",
   },
 
   {
@@ -60,7 +61,7 @@ const projects: Project[] = [
     slug: "movie-ai",
     name: "Cinna",
     summary:
-      "All-in-one movie planner with AI-tailored reviews, smart theater/seat picks, seat-view generator, value ticket finder, and calendar integration.",
+      "All-in-one movie planner with AI-tailored reviews, recommendation system, theater/seat in-app purchases, seat-view generator, value ticket finder, and calendar integration.",
     tech: [
       "OpenAI API",
       "Summarizer System",
@@ -72,6 +73,7 @@ const projects: Project[] = [
       "UI/UX and Accessibility",
     ],
     role: "Project Lead, Backend Integration",
+    github: "https://github.com/bnyg-yeah/cinna-ios",
   },
 
   {
@@ -89,6 +91,7 @@ const projects: Project[] = [
     ],
     image: "/images/projects/iOS-fitness/thumbnail.PNG",
     role: "Backend Lead and UX Overseer",
+    github: "https://github.com/bnyg-yeah/Calorie-Quest",
   },
 
   {
