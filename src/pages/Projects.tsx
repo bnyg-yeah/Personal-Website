@@ -26,9 +26,9 @@ const projects: Project[] = [
   //Project 1
   {
     slug: "vision-detection",
-    name: "Vision-Based Wildlife & Hazard Monitor w/ SAIC",
+    name: "Vision-Based Wildlife & People Monitor w/ SAIC",
     summary:
-      "Multi-modal ML monitoring system with an HCI dashboard alerting supervisors to wildlife, people, and hazards.",
+      "ML monitoring system with an HCI dashboard alerting supervisors to wildlife, people, and vehicles.",
     tech: [
       "Computer Vision",
       "Machine Learning Pipeline",
@@ -36,8 +36,9 @@ const projects: Project[] = [
       "Dashboard UX",
       "Mapping",
       "Live-Feeds",
+      "Remote Network System",
     ],
-    role: "Stakeholder liaison and Vision ML Integration Lead",
+    role: "Stakeholder liaison and Vision ML Developer",
     image: "/images/projects/vision-detection/thumbnail.png",
   },
 

@@ -23,7 +23,7 @@ body {
 
 @layer utilities {
   /* === Animated gradient divider === */
-divider-horizontal {
+.gradient-divider-horizontal {
     @apply h-px w-6 bg-gradient-to-r from-transparent via-white/70 to-transparent;
     background-size: 200% 100%;
     animation: shimmer 3s ease-in-out infinite;
