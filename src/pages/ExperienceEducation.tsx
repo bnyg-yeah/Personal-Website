@@ -47,7 +47,7 @@ const entries: Entry[] = [
     role: "Resident Advisor",
     org: "Virginia Tech",
     location: "Blacksburg, VA",
-    dates: "Aug 2022 – Dec 2025",
+    dates: "2022 – 2025",
     tags: [
       "Conflict Resolution & Mediation",
       "Leadership & Mentorship",
