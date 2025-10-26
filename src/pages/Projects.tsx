@@ -26,9 +26,9 @@ const projects: Project[] = [
   //Project 1
   {
     slug: "vision-detection",
-    name: "Vision-Based Wildlife & People Monitor w/ SAIC",
+    name: "Vision-Based Wildlife & People Monitor",
     summary:
-      "ML monitoring system with an HCI dashboard alerting supervisors to wildlife, people, and vehicles.",
+      "ML monitoring system in collaboration with SAIC, featuring an HCI dashboard that alerts supervisors to wildlife, people, and vehicles.",
     tech: [
       "Computer Vision",
       "Machine Learning Pipeline",
@@ -55,6 +55,7 @@ const projects: Project[] = [
       "Semi-/Unsupervised ML",
     ],
     role: "Software and Technical Lead, Dataset Pattern Miner",
+    image: "/images/projects/illegal-vessels/thumbnail.png"
   },
 
   {
