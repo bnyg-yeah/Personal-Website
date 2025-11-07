@@ -1,215 +1,260 @@
 // website-on-next/src/pages/ExperienceEducation.tsx
 
-import type { NextPage } from "next"; // Types the Next.js page component
-import Layout from "../components/Layout"; // Shared page chrome (header, footer, SEO)
+import type { NextPage } from "next";
+import Layout from "../components/Layout";
 
-// Core content shape for each entry (works for Experience and Education)
-type Entry = {
-  id: string; // Stable id for React keys and deep links (#id)
-  kind: "experience" | "education"; // Allows rendering two sections from one array
-  role: string; // Your title (e.g., "Firefighter")
-  org: string; // Org/institution (e.g., "Blacksburg Volunteer Fire Department")
-  location: string; // City, State
-  dates: string; // Human-readable range (e.g., "Feb 2023 – Dec 2025")
-  tags?: string[]; // Optional lightweight labels (skills/certs)
-  lines: string[]; // Short sentences in your own voice (rendered as paragraphs)
-  vignette?: string[]; // Optional 3–5 sentence story (progressive disclosure)
-  links?: LinkItem[]; // Optional external links (buttons/anchors)
-};
-// Shape for optional resource links (kept for future scaling; remove if unused)
-type LinkItem = {
-  label: string; // Button text (e.g., "Department")
-  href: string; // Destination URL
+/* ────────────────────────────────────────────────────────────────────────── */
+/* Data                                                                      */
+/* ────────────────────────────────────────────────────────────────────────── */
+
+type EducationItem = {
+  degree: string;
+  school: string;
+  dates: string;
+  notes?: string[];
+  links?: { label: string; href: string }[];
 };
 
-// Experience and Education Data
-const entries: Entry[] = [
+type ExperienceItem = {
+  title: string;
+  company: string;
+  dates: string;
+  location?: string;
+  bullets?: string[];
+  link?: { label: string; href: string };
+};
+
+const EDUCATION: EducationItem[] = [
   {
-    id: "firefighter",
-    kind: "experience",
-    role: "Firefighter",
-    org: "Blacksburg Volunteer Fire Department",
-    location: "Blacksburg, VA",
+    degree: "BS in Computer Science",
+    school: "Virginia Tech Department of Computer Science",
+    dates: "August 2021 - December 2025",
+    notes: ["Blacksburg, VA", "Major in Computer Science", "Minor in Human-Computer Interaction"],
+  },
+];
+
+const EXPERIENCE: ExperienceItem[] = [
+  {
+    title: "Firefighter",
+    company: "Blacksburg Volunteer Fire Department",
     dates: "Feb 2023 – Dec 2025",
-    tags: ["ProBoard FF I", "ProBoard FF II", "HazMat Awareness", "ICS"],
-    lines: [],
-    vignette: [],
-    links: [
-      {
-        label: "Blacksburg Fire",
-        href: "https://blacksburgfire.org/",
-      },
-    ],
+    location: "Blacksburg, VA",
+    bullets: ["ProBoard FF I", "ProBoard FF II", "HazMat Awareness", "ICS"],
+    link: { label: "Blacksburg Fire", href: "https://blacksburgfire.org/" },
   },
   {
-    id: "resident-advisor",
-    kind: "experience",
-    role: "Resident Advisor",
-    org: "Virginia Tech",
-    location: "Blacksburg, VA",
+    title: "Resident Advisor",
+    company: "Virginia Tech",
     dates: "2022 – 2025",
-    tags: [
+    location: "Blacksburg, VA",
+    bullets: [
       "Conflict Resolution & Mediation",
       "Leadership & Mentorship",
       "Resource Support",
       "Collaboration",
       "Community Impact",
     ],
-    lines: [],
-    vignette: [],
-    links: [
-      {
-        label: "Residential Well-Being",
-        href: "https://rwb.vt.edu/",
-      },
-    ],
-  },
-  {
-    id: "student",
-    kind: "education",
-    role: "Undergraduate Student",
-    org: "Virginia Tech Department of Computer Science",
-    location: "Blacksburg, VA",
-    dates: "August 2021 - December 2025",
-    tags: ["Major in Computer Science", "Minor in Human-Computer Interaction"],
-    lines: ["paragrph 1", "pargaphra 2"],
-    vignette: ["This is a story and about my experience"],
-    links: [
-      {
-        label: "Department of Computer Science",
-        href: "https://cs.vt.edu/",
-      },
-    ],
+    link: { label: "Residential Well-Being", href: "https://rwb.vt.edu/" },
   },
 ];
 
-// Tiny tag renderer
-function Tags({ list }: { list?: string[] }) {
-  if (!list || list.length === 0) return null;
+/* ────────────────────────────────────────────────────────────────────────── */
+/* UI helpers                                                                */
+/* ────────────────────────────────────────────────────────────────────────── */
+
+function SectionShell({
+  id,
+  title,
+  children,
+}: {
+  id: string;
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
-    <div className="mt-1 flex flex-wrap justify-center gap-2">
-      {list.map((tag) => (
-        <span
-          key={tag}
-          // className="rounded-full border border-white/15 bg-white/5 px-2 py-0.5 text-xs text-white/70"
-          className="rounded-full border border-white/15 bg-white/5 px-2 py-0.5 text-xs text-white/75"
-          style={{
-            textShadow: "0 0 10px rgba(256,256,256,1)",
-          }}
-        >
-          {tag}
-        </span>
-      ))}
-    </div>
+    <section
+      id={id}
+      aria-labelledby={`${id}-title`}
+      className={[
+        // Center the section within the whole viewport, accounting for header/footer
+        // (tweak the 5rem/6rem if your header/footer heights differ)
+        "relative",
+        "grid place-items-center",
+        "min-h-[calc(100svh-5rem)] md:min-h-[calc(100svh-6rem)]",
+        "px-[max(1rem,env(safe-area-inset-left))]",
+        "pr-[max(1rem,env(safe-area-inset-right))]",
+        "py-8",
+      ].join(" ")}
+    >
+      {/* Rotated rail label on desktop */}
+      <div
+        aria-hidden
+        className={[
+          "hidden md:block pointer-events-none",
+          "absolute left-4 top-1/2 -translate-y-1/2",
+          "-rotate-90 origin-left",
+          "tracking-[0.2em] text-white/70",
+          "font-['Times'] text-3xl lg:text-4xl",
+          "drop-shadow-[0_0_12px_rgba(0,0,0,0.85)]",
+          "select-none",
+        ].join(" ")}
+      >
+        {title}
+      </div>
+
+      {/* Main content card */}
+      <div className="w-full max-w-[80rem] md:pl-24">
+        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 sm:p-8 shadow-sm">
+          {/* Mobile title (rail is hidden) */}
+          <header className="mb-4 md:hidden">
+            <h2
+              id={`${id}-title`}
+              className="text-2xl sm:text-3xl font-['Times'] font-bold text-white"
+              style={{ textShadow: "0 0 12px rgba(0,0,0,1)" }}
+            >
+              {title}
+            </h2>
+            <div
+              aria-hidden
+              className="mt-3 h-px w-6 bg-gradient-to-r from-transparent via-white/70 to-transparent"
+              style={{ animation: "shimmer 3s ease-in-out infinite", backgroundSize: "200% 100%" }}
+            />
+            {/* Inline keyframes so we don't touch globals */}
+            <style jsx>{`
+              @keyframes shimmer {
+                0%,
+                100% {
+                  background-position: 0% 50%;
+                  opacity: 0.6;
+                }
+                50% {
+                  background-position: 100% 50%;
+                  opacity: 1;
+                }
+              }
+            `}</style>
+          </header>
+
+          {children}
+        </div>
+      </div>
+    </section>
   );
 }
 
-// One entry row
-function EntryRow({ item }: { item: Entry }) {
+function EduCard({ item }: { item: EducationItem }) {
   return (
-    <div id={item.id} role="listitem" className="py-5">
-      {/* Title line: Role @ Org */}
-      <h3 className="text-base font-semibold text-white">
-        {item.role} <span className="text-white/70">@ {item.org}</span>
+    <article className="space-y-4 text-left">
+      <h3
+        className="text-2xl font-['Times'] font-semibold text-white"
+        style={{ textShadow: "0 1.5px 5px rgba(0,0,0,0.7)" }}
+      >
+        {item.degree}
+        <span className="block text-white/75 text-base font-normal">
+          {item.school} &middot; {item.dates}
+        </span>
       </h3>
 
-      {/* Meta line: location + gradient divider + dates */}
-      <p className="mt-0.5 flex items-center justify-center gap-2 text-sm text-white/60">
-        <span>{item.location}</span>
-        <span
-          aria-hidden
-          className="h-3 w-px bg-gradient-to-b from-transparent via-white/50 to-transparent"
-        />
-        <span>{item.dates}</span>
-      </p>
-
-      {/* Tags */}
-      <Tags list={item.tags} />
-
-      {/* Sentences as paragraphs */}
-      {item.lines.length > 0 && (
-        <div className="mt-3 space-y-1.5 text-left">
-          {item.lines.map((line, i) => (
-            <p key={i} className="text-white/90">
-              {line}
-            </p>
+      {item.notes?.length ? (
+        <ul className="list-disc list-inside space-y-1 text-white/90">
+          {item.notes.map((n, i) => (
+            <li key={i}>{n}</li>
           ))}
-        </div>
-      )}
+        </ul>
+      ) : null}
 
-      {/* Optional vignette */}
-      {item.vignette && item.vignette.length > 0 && (
-        <details className="mt-3 text-left">
-          <summary className="cursor-pointer text-sm font-medium text-sky-300">
-            Read story
-          </summary>
-          <div className="mt-2 space-y-2 text-white/85">
-            {item.vignette.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
-          </div>
-        </details>
-      )}
-
-      {/* Optional external links */}
-      {item.links && item.links.length > 0 && (
-        <p className="mt-3 text-center">
+      {item.links?.length ? (
+        <div className="mt-4 flex flex-wrap gap-3">
           {item.links.map((lnk) => (
             <a
               key={lnk.href}
               href={lnk.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center rounded-md border border-white/20 px-3 py-1.5 text-sm text-sky-300 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30 underline-offset-4"
+              className="inline-flex items-center rounded-md border border-white/20 px-3 py-1.5 text-sm text-sky-300 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30"
             >
               {lnk.label}
             </a>
           ))}
-        </p>
-      )}
-    </div>
+        </div>
+      ) : null}
+    </article>
   );
 }
 
-// Section wrapper
-function Section({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
+function ExpCard({ item }: { item: ExperienceItem }) {
   return (
-    <section className="space-y-4">
-      <h2 className="text-2xl font-semibold text-white">{title}</h2>
-      {children}
-    </section>
+    <article className="rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6 shadow-sm">
+      <h3
+        className="text-xl font-['Times'] font-semibold text-white"
+        style={{ textShadow: "0 1.5px 5px rgba(0,0,0,0.7)" }}
+      >
+        {item.title}
+        <span className="block text-white/75 text-sm font-normal">
+          {item.company} &middot; {item.dates}
+          {item.location ? ` · ${item.location}` : ""}
+        </span>
+      </h3>
+
+      {item.bullets?.length ? (
+        <ul className="mt-3 list-disc list-inside space-y-1 text-white/90">
+          {item.bullets.map((b, i) => (
+            <li key={i}>{b}</li>
+          ))}
+        </ul>
+      ) : null}
+
+      {item.link ? (
+        <div className="mt-4">
+          <a
+            href={item.link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center rounded-md border border-white/20 px-3 py-1.5 text-sm text-sky-300 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30"
+          >
+            {item.link.label}
+          </a>
+        </div>
+      ) : null}
+    </article>
   );
 }
+
+/* ────────────────────────────────────────────────────────────────────────── */
+/* Page                                                                       */
+/* ────────────────────────────────────────────────────────────────────────── */
 
 const ExperienceEducation: NextPage = () => {
-  const experience = entries.filter((e) => e.kind === "experience");
-  const education = entries.filter((e) => e.kind === "education");
-
   return (
     <Layout title="Experience & Education" contentWidth="wide">
-      <div className="space-y-10">
-        <Section title="Education">
-          <div role="list" className="divide-y divide-white/10">
-            {education.map((item) => (
-              <EntryRow key={item.id} item={item} />
-            ))}
+      {/* Education */}
+      <SectionShell id="education" title="Education">
+        <div className="grid gap-6 md:grid-cols-12 items-center">
+          {/* Blurb */}
+          <div className="md:col-span-5">
+            <p className="text-white/90 text-lg" style={{ textShadow: "0 0 10px rgba(0,0,0,0.6)" }}>
+              Focused on Human–Computer Interaction and applied AI/ML. I like mixing strong
+              fundamentals with practical, human-centered work.
+            </p>
           </div>
-        </Section>
 
-        <Section title="Experience">
-          <div role="list" className="divide-y divide-white/10">
-            {experience.map((item) => (
-              <EntryRow key={item.id} item={item} />
+          {/* Details */}
+          <div className="md:col-span-7 space-y-4">
+            {EDUCATION.map((e, i) => (
+              <EduCard key={i} item={e} />
             ))}
           </div>
-        </Section>
-      </div>
+        </div>
+      </SectionShell>
+
+      {/* Experience */}
+      <SectionShell id="experience" title="Experience">
+        <div className="space-y-5">
+          {EXPERIENCE.map((x, i) => (
+            <ExpCard key={i} item={x} />
+          ))}
+        </div>
+      </SectionShell>
     </Layout>
   );
 };
