@@ -62,19 +62,20 @@ const projects: Project[] = [
     slug: "movie-ai",
     name: "Cinna",
     summary:
-      "All-in-one movie planner with AI-tailored reviews, recommendation system, theater/seat in-app purchases, seat-view generator, value ticket finder, and calendar integration.",
+      "All-in-one movie planner with AI-tailored overviews, recommendation system, ticket in-app purchases, seat-view generator, immersive AI user-movie scenes, and calendar integration. Featuring iOS 26 Liquid Glass UI.",
     tech: [
       "OpenAI API",
       "Summarizer System",
-      "Recommender System",
+      "Recommendation System",
       "AI Image Generation",
       "REST APIs",
       "Full-Stack",
       "Personalization and Preference Modeling",
       "UI/UX and Accessibility",
     ],
-    role: "Project Lead, Backend Integration",
+    role: "Project Lead, AI Integration, UI Lead",
     github: "https://github.com/bnyg-yeah/cinna-ios",
+    image: "/images/projects/movie-ai/thumbnail.jpg",
   },
 
   {
@@ -223,9 +224,9 @@ const Projects: NextPage = () => {
                   <span
                     key={t}
                     // className="rounded-full bg-white/20 px-3 py-1 text-xs text-white/90"
-                  className="rounded-full border border-white/15 bg-white/5 px-2 py-0.5 text-xs text-white/75"
+                    className="rounded-full border border-white/15 bg-white/5 px-2 py-0.5 text-xs text-white/75"
                     style={{
-                      textShadow: "0 0 10px rgba(256,256,256,1)", 
+                      textShadow: "0 0 10px rgba(256,256,256,1)",
                     }}
                   >
                     {t}

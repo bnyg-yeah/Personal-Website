@@ -77,33 +77,33 @@ function SectionShell({
       aria-labelledby={`${id}-title`}
       className={[
         // Center the section within the whole viewport, accounting for header/footer
-        // (tweak the 5rem/6rem if your header/footer heights differ)
         "relative",
-        "grid place-items-center",
+        "flex items-center justify-center",
         "min-h-[calc(100svh-5rem)] md:min-h-[calc(100svh-6rem)]",
         "px-[max(1rem,env(safe-area-inset-left))]",
         "pr-[max(1rem,env(safe-area-inset-right))]",
         "py-8",
       ].join(" ")}
     >
-      {/* Rotated rail label on desktop */}
+      {/* Rotated rail label on desktop - positioned absolutely */}
       <div
         aria-hidden
         className={[
           "hidden md:block pointer-events-none",
-          "absolute left-4 top-1/2 -translate-y-1/2",
+          "absolute left-8 top-1/2 -translate-y-1/2",
           "-rotate-90 origin-left",
           "tracking-[0.2em] text-white/70",
           "font-['Times'] text-3xl lg:text-4xl",
           "drop-shadow-[0_0_12px_rgba(0,0,0,0.85)]",
           "select-none",
+          "z-10",
         ].join(" ")}
       >
         {title}
       </div>
 
-      {/* Main content card */}
-      <div className="w-full max-w-[80rem] md:pl-24">
+      {/* Main content card - centered without left padding */}
+      <div className="w-full max-w-4xl">
         <div className="rounded-2xl border border-white/10 bg-white/5 p-6 sm:p-8 shadow-sm">
           {/* Mobile title (rail is hidden) */}
           <header className="mb-4 md:hidden">
