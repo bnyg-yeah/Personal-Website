@@ -55,7 +55,8 @@ const projects: Project[] = [
       "Semi-/Unsupervised ML",
     ],
     role: "Software and Technical Lead, Dataset Pattern Miner",
-    image: "/images/projects/illegal-vessels/thumbnail.png"
+    image: "/images/projects/illegal-vessels/thumbnail.png",
+    github: "https://github.com/bnyg-yeah/ML-vessels",
   },
 
   {
