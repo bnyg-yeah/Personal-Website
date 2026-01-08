@@ -19,7 +19,7 @@ export default function Home() {
       contentWidth="full"
       //background={<VideoBackground />}
     >
-      <section className="relative flex flex-col items-center justify-center mt-4">
+      <section className="relative flex flex-col items-center justify-center mt-16">
         <h1 className={`${inter.className} text-7xl font-bold tracking-widest`}>
           I AM BRIGHTON YOUNG
         </h1>
@@ -29,7 +29,7 @@ export default function Home() {
             textShadow: "0 0 12px rgba(0,0,0,1)", // subtle feather halo
           }}
         >
-          <span>Virginia Tech Computer Science Student</span>
+          <span>Virginia Tech Computer Science Graduate</span>
           <span aria-hidden className="gradient-divider-horizontal" />
           <span>Software Developer</span>
           <span aria-hidden className="gradient-divider-horizontal" />
@@ -37,7 +37,7 @@ export default function Home() {
         </h2>
 
         <h3
-          className="max-w-[170px] text-lg absolute top-[109%] left-[54%] "
+          className="max-w-[170px] text-lg absolute top-[130%] left-[55.5%] "
           style={{
             textShadow: "0 0 12px rgba(0,0,0,1)", // subtle feather halo
           }}
