@@ -19,7 +19,8 @@ export default function Home() {
       contentWidth="full"
       //background={<VideoBackground />}
     >
-      <section className="relative flex flex-col items-center justify-center mt-16">
+      <section className="relative flex flex-col items-center justify-center mt-16
+      [@media(min-aspect-ratio:16/9)]:mt-32">
         <h1 className={`${inter.className} text-7xl font-bold tracking-widest`}>
           I AM BRIGHTON YOUNG
         </h1>
@@ -37,7 +38,8 @@ export default function Home() {
         </h2>
 
         <h3
-          className="max-w-[170px] text-lg absolute top-[130%] left-[55.5%] "
+          className="max-w-[170px] text-lg absolute top-[130%] left-[55.5%]
+          [@media(min-aspect-ratio:16/9)]:top-[160%] left-[57%] "
           style={{
             textShadow: "0 0 12px rgba(0,0,0,1)", // subtle feather halo
           }}
