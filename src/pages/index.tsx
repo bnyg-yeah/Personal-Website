@@ -17,9 +17,10 @@ export default function Home() {
       title="Brighton Young .dev"
       subtitle="Explore my work and projects"
       contentWidth="full"
-      //background={<VideoBackground />}
     >
-      <section className="relative flex flex-col items-center justify-center mt-16
+      <section className="relative flex flex-col items-center justify-center 
+      /*16:10 default*/
+      mt-16
       [@media(min-aspect-ratio:16/9)]:mt-32">
         <h1 className={`${inter.className} text-7xl font-bold tracking-widest`}>
           I AM BRIGHTON YOUNG
@@ -38,8 +39,20 @@ export default function Home() {
         </h2>
 
         <h3
-          className="max-w-[170px] text-lg absolute top-[130%] left-[55.5%]
-          [@media(min-aspect-ratio:16/9)]:top-[160%] left-[57%] "
+          className="max-w-[170px] text-lg absolute 
+          /* 1. Default (Mobile/Portrait) */
+          top-[110%] left-[30%]
+
+          /* 2. MacBook Pro / 16:10 Screens */
+          /* Adjust these values specifically for your laptop */
+          [@media(min-aspect-ratio:16/10)]:top-[135%] 
+          [@media(min-aspect-ratio:16/10)]:left-[55.5%]
+
+          /* 3. Standard Monitors / 16:9 Screens */
+          /* These override the 16:10 values on wider screens */
+          [@media(min-aspect-ratio:16/9)]:top-[180%] 
+          [@media(min-aspect-ratio:16/9)]:left-[57%]
+          "
           style={{
             textShadow: "0 0 12px rgba(0,0,0,1)", // subtle feather halo
           }}
